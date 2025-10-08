@@ -18,6 +18,7 @@ export default function MarcaClient({ marca }: MarcaClientProps) {
   const [products, setProducts] = useState<ProductType[]>([]);
   const cart = useCart();
   const lovedProducts = useLovedProducts();
+    const { addLoveItems } = useLovedProducts();
   const formattedMarca = marca.charAt(0).toUpperCase() + marca.slice(1).toLowerCase();
 
   useEffect(() => {
@@ -31,9 +32,9 @@ export default function MarcaClient({ marca }: MarcaClientProps) {
   const addToCart = (product: ProductType) => {
     cart.addItem(product);
   };
-
-  const toggleLoved = (product: ProductType) => {
-    lovedProducts.toggleItem(product);
+  const handleAddToFavorites = (e: React.MouseEvent, product: ProductType) => {
+    e.stopPropagation();
+    addLoveItems(product);
   };
 
   return (
@@ -71,7 +72,7 @@ export default function MarcaClient({ marca }: MarcaClientProps) {
                   <div className="aspect-square relative overflow-hidden bg-gray-100">
                     {product.images && product.images.length > 0 ? (
                       <img
-                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL || ''}${product.images[0].url || product.images[0].formats?.medium?.url || product.images[0].formats?.small?.url || ''}`}
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL || ''}${product.images[0].url || ''}`}
                         alt={product.productName || `Producto ${formattedMarca}`}
                         className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
                       />
@@ -97,8 +98,8 @@ export default function MarcaClient({ marca }: MarcaClientProps) {
                     </span>
                     <div className="flex space-x-2">
                       <button
-                        onClick={() => toggleLoved(product)}
-                        className={`p-2 rounded-full ${lovedProducts.items.some((item) => item.id === product.id)
+                        onClick={(e) => handleAddToFavorites(e, product)}
+                        className={`p-2 rounded-full
                             ? "bg-red-50 text-red-500"
                             : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                           }`}
