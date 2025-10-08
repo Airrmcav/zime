@@ -263,7 +263,7 @@ const ActionPrice = () => {
                                     <textarea
                                         value={quoteForm.message}
                                         onChange={(e) => setQuoteForm({...quoteForm, message: e.target.value})}
-                                        rows="4"
+                                        rows={4}
                                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all resize-none"
                                         placeholder="Describe qué productos necesitas, cantidades aproximadas, plazos, etc."
                                     ></textarea>
