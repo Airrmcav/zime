@@ -83,7 +83,7 @@ const Marcas = () => {
                                         className="max-w-24 max-h-12 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110"
                                         onError={(e) => {
                                             // Fallback en caso de error al cargar imagen
-                                            e.target.src = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" viewBox="0 0 100 40"><rect width="100" height="40" fill="%23f3f4f6"/><text x="50" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="%236b7280">${brand.name}</text></svg>`;
+                                            (e.target as HTMLImageElement).src = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" viewBox="0 0 100 40"><rect width="100" height="40" fill="%23f3f4f6"/><text x="50" y="25" font-family="Arial" font-size="12" text-anchor="middle" fill="%236b7280">${brand.name}</text></svg>`;
                                         }}
                                     />
                                 </div>
