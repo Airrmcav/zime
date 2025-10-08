@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "catalogos",
+  "info": {
+    "singularName": "catalogo",
+    "pluralName": "catalogos",
+    "displayName": "Catalogo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nameCatalogo": {
+      "type": "string"
+    },
+    "descriptionCatalogo": {
+      "type": "text"
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "nameCatalogo"
+    }
+  }
+}
