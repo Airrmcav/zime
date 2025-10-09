@@ -87,7 +87,6 @@ const Marcas = () => {
                                         }}
                                     />
                                 </div>
-                                
                                 {/* Nombre de la marca (opcional, aparece en hover) */}
                                 <p className="text-center text-sm text-gray-500 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     {brand.name}
