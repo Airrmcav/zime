@@ -174,7 +174,7 @@ const ChooseCategory = () => {
                                                     <div className="relative h-56 bg-gradient-to-br from-gray-50 to-blue-50/30 flex items-center justify-center overflow-hidden">
                                                         {category.mainImage && category.mainImage.url ? (
                                                             <img
-                                                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${category.mainImage.url}`}
+                                                                src={`${category.mainImage.url}`}
                                                                 alt={category.categoryName}
                                                                 className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
                                                             />

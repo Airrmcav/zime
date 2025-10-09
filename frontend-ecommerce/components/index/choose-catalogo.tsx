@@ -144,7 +144,7 @@ const ChooseCatalogo = () => {
                                                         <div className="relative h-56 bg-gradient-to-br from-gray-50 to-blue-50/30 flex items-center justify-center overflow-hidden">
                                                             {catalogo.mainImage && catalogo.mainImage.length > 0 ? (
                                                                 <img
-                                                                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${catalogo.mainImage[0].url}`}
+                                                                    src={`${catalogo.mainImage[0].url}`}
                                                                     alt={catalogo.nameCatalogo || 'Catálogo'}
                                                                     className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
                                                                 />

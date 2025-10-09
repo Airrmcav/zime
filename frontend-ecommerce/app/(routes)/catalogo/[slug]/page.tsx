@@ -147,7 +147,7 @@ export default function Page() {
                                 {/* {catalogoInfo?.mainImage && catalogoInfo.mainImage.length > 0 ? ( */}
                                     <div className="relative w-full h-[25rem]">
                                         <img 
-                                            src={catalogoInfo?.mainImage?.[0]?.url ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${catalogoInfo.mainImage[0].url}` : '/placeholder-image.jpg'} 
+                                            src={catalogoInfo.mainImage[0].url}     
                                             alt={catalogName}
                                             className="w-full h-full object-contain object-center"
                                             onError={(e) => console.error("Error loading image:", e.currentTarget.src)}

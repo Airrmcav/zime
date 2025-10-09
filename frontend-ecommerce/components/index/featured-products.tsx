@@ -62,7 +62,10 @@ const FeaturedProducts = () => {
           </p>
         </div>
         <div className="flex justify-center w-full lg:w-auto">
-          <button className="bg-orange-400 flex gap-2 text-white px-6 py-3 rounded-2xl font-medium hover:bg-orange-500 transition">
+          <button 
+            onClick={() => router.push('/catalogo/epp')}
+            className="cursor-pointer bg-orange-400 flex gap-2 text-white px-6 py-3 rounded-2xl font-medium hover:bg-orange-500 transition"
+          >
             Ver más productos
             <MoveRight />
           </button>

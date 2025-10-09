@@ -62,7 +62,9 @@ const FeaturedProductsOficina = () => {
                     </p>
                 </div>
                 <div className="flex justify-center w-full lg:w-auto">
-                    <button className="bg-blue-600 flex gap-2 text-white px-6 py-3 rounded-2xl font-medium hover:bg-gray-700 transition">
+                    <button
+                     onClick={() => router.push('/catalogo/epp')}
+                    className="cursor-pointer bg-blue-600 flex gap-2 text-white px-6 py-3 rounded-2xl font-medium hover:bg-gray-700 transition">
                         Ver más productos
                         <MoveRight />
                     </button>
@@ -95,7 +97,7 @@ const FeaturedProductsOficina = () => {
                                                     <div className="relative overflow-hidden bg-white h-48 flex items-center justify-center">
                                                         {imageUrl ? (
                                                             <img
-                                                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${imageUrl}`}
+                                                                src={`${imageUrl}`}
                                                                 alt={productName}
                                                                 className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
                                                                 loading="lazy"
