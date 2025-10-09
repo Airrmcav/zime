@@ -16,7 +16,8 @@ const SocialMediaLinks = () => {
                     onMouseLeave={() => setHoveredIcon(null)}
                 >
                     <a 
-                        href="#" 
+                        href="https://www.facebook.com/zimemx" 
+                        target="_blank"
                         className="cursor-pointer flex items-center bg-blue-600 text-white p-3 rounded-r-full shadow-lg transform transition-all duration-300 hover:translate-x-2 hover:scale-110 hover:shadow-2xl animate-pulse"
                     >
                         <Facebook className="w-6 h-6" />
@@ -37,7 +38,8 @@ const SocialMediaLinks = () => {
                     onMouseLeave={() => setHoveredIcon(null)}
                 >
                     <a 
-                        href="#" 
+                        href="https://www.instagram.com/zimemx" 
+                        target="_blank"
                         className="cursor-pointer flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white p-3 rounded-r-full shadow-lg transform transition-all duration-300 hover:translate-x-2 hover:scale-110 hover:shadow-2xl hover:rotate-6"
                     >
                         <Instagram className="w-6 h-6 animate-spin" style={{animationDuration: '3s'}} />
@@ -51,26 +53,7 @@ const SocialMediaLinks = () => {
                     {/* <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-r-full blur opacity-30 group-hover:opacity-60 transition-opacity"></div> */}
                 </div>
 
-                {/* TikTok */}
-                <div 
-                    className="group relative"
-                    onMouseEnter={() => setHoveredIcon('tiktok')}
-                    onMouseLeave={() => setHoveredIcon(null)}
-                >
-                    <a 
-                        href="#" 
-                        className="cursor-pointer flex items-center bg-black text-white p-3 rounded-r-full shadow-lg transform transition-all duration-300 hover:translate-x-2 hover:scale-110 hover:shadow-2xl hover:-rotate-12"
-                    >
-                        <Music className="w-6 h-6 animate-bounce" />
-                        <span className={`ml-3 font-medium transition-all duration-300 overflow-hidden ${
-                            hoveredIcon === 'tiktok' ? 'w-20 opacity-100' : 'w-0 opacity-0'
-                        }`}>
-                            TikTok
-                        </span>
-                    </a>
-                    {/* Efecto de vibración para TikTok */}
-                    {/* <div className="absolute inset-0 rounded-r-full bg-red-500 opacity-20 animate-pulse group-hover:animate-bounce"></div> */}
-                </div>
+
             </div>
 
             {/* WhatsApp en esquina inferior derecha */}
@@ -81,7 +64,8 @@ const SocialMediaLinks = () => {
                     onMouseLeave={() => setHoveredIcon(null)}
                 >
                     <a 
-                        href="#" 
+                        href="https://api.whatsapp.com/send?phone=525560913395" 
+                        target="_blank"
                         className="cursor-pointer flex items-center justify-center bg-green-500 text-white p-4 rounded-full shadow-2xl transform transition-all duration-500 hover:scale-125 hover:rotate-12 animate-bounce"
                         style={{animationDuration: '2s'}}
                     >
