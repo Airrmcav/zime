@@ -105,7 +105,7 @@ const CarouselProduct = (props: CarouselProductProps) => {
                     <div className="relative overflow-hidden bg-white rounded-xl sm:rounded-2xl border border-gray-200 shadow-lg aspect-square max-w-full">
                         <div className="flex items-center justify-center w-full h-full">
                             <img
-                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${images[selectedImageIndex]?.url}`}
+                                src={`${images[selectedImageIndex]?.url}`}
                                 alt={images[selectedImageIndex]?.alternativeText || `${productName} - Imagen ${selectedImageIndex + 1}`}
                                 className={`w-full h-full object-contain p-2 sm:p-4 transition-transform duration-300 ${isZoomed ? 'scale-150 cursor-zoom-out' : 'cursor-zoom-in hover:scale-105'
                                     }`}
@@ -203,7 +203,7 @@ const CarouselProduct = (props: CarouselProductProps) => {
                                         >
                                             <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
                                                 <img
-                                                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${image.url}`}
+                                                    src={`${image.url}`}
                                                     alt={image.alternativeText || `Miniatura ${actualIndex + 1}`}
                                                     className="w-full h-full object-contain p-0.5 sm:p-1 group-hover:scale-110 transition-transform duration-200 cursor-pointer"
                                                     loading="lazy"
@@ -262,7 +262,7 @@ const CarouselProduct = (props: CarouselProductProps) => {
                                     >
                                         <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
                                             <img
-                                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${image.url}`}
+                                                src={`${image.url}`}
                                                 alt={image.alternativeText || `Miniatura ${index + 1}`}
                                                 className="w-full h-full object-contain p-0.5 sm:p-1 group-hover:scale-110 transition-transform duration-200"
                                             />
