@@ -72,7 +72,7 @@ const Footer = () => {
                                 <Shield className="w-6 h-6 text-white" />
                             </div>
                             <div className="flex items-center space-x-2">
-                                <img src="logo/logo.webp" alt="Logo ZIME" className='w-full h-24' />
+                                <img src="/logo/logo.webp" alt="Logo ZIME" className='w-full h-24' />
                             </div>
                         </div>
                         <p className="text-gray-800 text-sm leading-relaxed">

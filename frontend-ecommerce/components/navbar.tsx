@@ -80,7 +80,7 @@ const Navbar = () => {
                         {/* Logo */}
                         <div className="flex items-center space-x-2">
                             <button onClick={() => router.push("/")} className="cursor-pointer">
-                                <img src="logo/logo.webp" alt="Logo ZIME" className='w-full h-24' />
+                                <img src="/logo/logo.webp" alt="Logo ZIME" className='w-full h-24' />
                             </button>
                         </div>
 
