@@ -256,7 +256,7 @@ export default function Page() {
                                     <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
                                         <button
                                             onClick={() => setViewMode('grid')}
-                                            className={`p-2 rounded-md transition-all ${viewMode === 'grid'
+                                            className={`cursor-pointer p-2 rounded-md transition-all ${viewMode === 'grid'
                                                 ? 'bg-white shadow-sm text-orange-600'
                                                 : 'text-gray-600 hover:text-gray-800'
                                             }`}
@@ -265,7 +265,7 @@ export default function Page() {
                                         </button>
                                         <button
                                             onClick={() => setViewMode('list')}
-                                            className={`p-2 rounded-md transition-all ${viewMode === 'list'
+                                            className={`cursor-pointer p-2 rounded-md transition-all ${viewMode === 'list'
                                                 ? 'bg-white shadow-sm text-orange-600'
                                                 : 'text-gray-600 hover:text-gray-800'
                                             }`}
