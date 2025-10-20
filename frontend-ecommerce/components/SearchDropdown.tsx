@@ -182,7 +182,7 @@ export default function SearchDropdown({ isMobile = false, onClose }: SearchDrop
                             {category.mainImage && category.mainImage.url && (
                               <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 bg-white shadow-sm border border-slate-200">
                                 <img
-                                  src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${category.mainImage.url}`}
+                                  src={`${category.mainImage.url}`}
                                   alt={category.mainImage.alternativeText || category.categoryName}
                                   className="w-full h-full object-contain"
                                 />

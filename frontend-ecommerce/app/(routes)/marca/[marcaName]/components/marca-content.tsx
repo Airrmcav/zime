@@ -68,7 +68,7 @@ export default function MarcaContent({ marcaName }: MarcaContentProps) {
               (result[0] as ProductType).marcaProduct?.mainImage && (
                 <div className="w-full md:w-1/3 flex justify-center">
                   <img
-                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL || ''}${(result[0] as ProductType).marcaProduct?.mainImage?.url || ''}`}
+                    src={`${(result[0] as ProductType).marcaProduct?.mainImage?.url || ''}`}
                     alt={`Logo ${marcaName}`}
                     className="max-h-48 object-contain bg-white p-4 rounded-lg shadow-lg"
                   />
