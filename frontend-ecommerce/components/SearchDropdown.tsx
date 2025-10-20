@@ -224,7 +224,7 @@ export default function SearchDropdown({ isMobile = false, onClose }: SearchDrop
                         <div className="w-12 h-12 bg-white rounded-xl overflow-hidden flex-shrink-0 shadow-sm border border-slate-200 group-hover:shadow-md transition-shadow">
                           {product.images && product.images.length > 0 ? (
                             <img
-                              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}`}
+                              src={`${product.images[0].url}`}
                               alt={product.productName || product.productName}
                               width={48}
                               height={48}

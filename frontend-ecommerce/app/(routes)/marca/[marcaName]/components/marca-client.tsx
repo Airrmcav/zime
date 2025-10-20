@@ -219,7 +219,7 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
                       <div className="aspect-square relative overflow-hidden">
                         {product.images && product.images.length > 0 ? (
                           <img
-                            src={`${process.env.NEXT_PUBLIC_BACKEND_URL || ''}${product.images[0].url || ''}`}
+                            src={`${product.images[0].url || ''}`}
                             alt={product.productName || `Producto ${marcaName}`}
                             className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
                           />
