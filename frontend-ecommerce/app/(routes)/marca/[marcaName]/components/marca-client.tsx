@@ -19,13 +19,16 @@ import {
   Star,
   TrendingUp,
   Package,
-  Sparkles
+  Sparkles,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { useCart } from "@/hooks/use-cart";
 import { Badge } from "@/components/ui/badge";
 import IconButton from "@/components/icon-button";
 import { useLovedProducts } from "@/hooks/use-loved-products";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 
 interface MarcaClientProps {
@@ -36,6 +39,9 @@ interface MarcaClientProps {
 function MarcaClientBase({ marcaName }: MarcaClientProps) {
   const { loading, result, error } = useGetProductsByMarcaName(marcaName);
   const [products, setProducts] = useState<ProductType[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [displayedProducts, setDisplayedProducts] = useState<ProductType[]>([]);
+  const productsPerPage = 12;
   const cart = useCart();
   const router = useRouter();
   const lovedProducts = useLovedProducts();
@@ -48,6 +54,31 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
       setProducts(result as ProductType[]);
     }
   }, [result]);
+  
+  // Efecto para manejar la paginación
+  useEffect(() => {
+    if (products.length > 0) {
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = startIndex + productsPerPage;
+      setDisplayedProducts(products.slice(startIndex, endIndex));
+    }
+  }, [currentPage, products]);
+  
+  const totalPages = Math.ceil(products.length / productsPerPage);
+  
+  const goToNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+  
+  const goToPreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const addToCart = (product: ProductType) => {
     cart.addItem(product);
@@ -208,7 +239,7 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {products.map((product) => (
+              {displayedProducts.map((product) => (
                 <div
                   key={product.id}
                   className="group h-full hover:shadow-2xl shadow-md transition-all duration-300 transform hover:-translate-y-2 bg-white overflow-hidden "
@@ -333,6 +364,35 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
                 </div>
               ))}
             </div>
+            
+            {/* Controles de paginación */}
+            {totalPages > 1 && (
+              <div className="flex justify-center items-center mt-12 gap-4">
+                <Button 
+                  onClick={goToPreviousPage} 
+                  disabled={currentPage === 1}
+                  variant="outline"
+                  className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md shadow-sm"
+                >
+                  <ChevronLeft className="w-5 h-5" /> Anterior
+                </Button>
+                
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-medium text-gray-700">
+                    Página {currentPage} de {totalPages}
+                  </span>
+                </div>
+                
+                <Button 
+                  onClick={goToNextPage} 
+                  disabled={currentPage === totalPages}
+                  variant="outline"
+                  className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md shadow-sm"
+                >
+                  Siguiente <ChevronRight className="w-5 h-5" />
+                </Button>
+              </div>
+            )}
           </>
         ) : (
           <div className="text-center py-20">
