@@ -233,7 +233,7 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
                   Catálogo Completo
                 </h2>
                 <p className="text-gray-600 mt-2">
-                  Explora {products.length} productos disponibles
+                  Explora {result && Array.isArray(result) ? result.length : products.length} productos disponibles
                 </p>
               </div>
             </div>
