@@ -57,7 +57,7 @@ const FeaturedProducts = ({ products = [] }: FeaturedProductProps) => {
                 {/* Image */}
                 {product.images && product.images[0] ? (
                   <img
-                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}`}
+                    src={`${product.images[0].url}`}
                     alt={product.productName}
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                   />
