@@ -54,7 +54,7 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
       setProducts(result as ProductType[]);
     }
   }, [result]);
-  
+
   // Efecto para manejar la paginación
   useEffect(() => {
     if (products.length > 0) {
@@ -63,16 +63,16 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
       setDisplayedProducts(products.slice(startIndex, endIndex));
     }
   }, [currentPage, products]);
-  
+
   const totalPages = Math.ceil(products.length / productsPerPage);
-  
+
   const goToNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
-  
+
   const goToPreviousPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -96,12 +96,12 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
     lovedProducts.toggleLoveItem(product);
   };
 
-   const handleAddToFavorites = (e: React.MouseEvent, product: ProductType) => {
+  const handleAddToFavorites = (e: React.MouseEvent, product: ProductType) => {
     e.stopPropagation();
     addLoveItems(product);
   };
 
-    const handleMaximize = (e: React.MouseEvent, product: ProductType) => {
+  const handleMaximize = (e: React.MouseEvent, product: ProductType) => {
     e.stopPropagation();
     handleCardClick(product);
   };
@@ -262,31 +262,31 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
                         )}
                       </div>
 
-                       <div
-                  onClick={(e) => handleAddToFavorites(e, product)}
-                  className="absolute top-0 right-0 z-10"
-                >
-                  <IconButton
-                    onClick={() => { }}
-                    icon={<Heart className="w-4 h-4 text-gray-800 hover:text-red-500 transition-colors" />}
-                    className="p-2 bg-gray-200 transition-all duration-200 group-hover:opacity-100 rounded-none"
-                    aria-label="Agregar a favoritos"
-                    title="Agregar a favoritos"
-                  />
-                </div>
+                      <div
+                        onClick={(e) => handleAddToFavorites(e, product)}
+                        className="absolute top-0 right-0 z-10"
+                      >
+                        <IconButton
+                          onClick={() => { }}
+                          icon={<Heart className="w-4 h-4 text-gray-800 hover:text-red-500 transition-colors" />}
+                          className="p-2 bg-gray-200 transition-all duration-200 group-hover:opacity-100 rounded-none"
+                          aria-label="Agregar a favoritos"
+                          title="Agregar a favoritos"
+                        />
+                      </div>
 
-                <div
-                  onClick={(e) => handleMaximize(e, product)}
-                  className="absolute top-12 right-0 z-10"
-                >
-                  <IconButton
-                    onClick={() => { }}
-                    icon={<Maximize2 className="w-4 h-4 text-gray-800 hover:text-blue-500 transition-colors" />}
-                    className="p-2 bg-gray-200 transition-all duration-200 group-hover:opacity-100 rounded-none"
-                    aria-label="Ver producto"
-                    title="Ver producto"
-                  />
-                </div>
+                      <div
+                        onClick={(e) => handleMaximize(e, product)}
+                        className="absolute top-12 right-0 z-10"
+                      >
+                        <IconButton
+                          onClick={() => { }}
+                          icon={<Maximize2 className="w-4 h-4 text-gray-800 hover:text-blue-500 transition-colors" />}
+                          className="p-2 bg-gray-200 transition-all duration-200 group-hover:opacity-100 rounded-none"
+                          aria-label="Ver producto"
+                          title="Ver producto"
+                        />
+                      </div>
 
                       {/* Badges */}
                       <div className="absolute top-2 left-2">
@@ -364,33 +364,119 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
                 </div>
               ))}
             </div>
-            
+
             {/* Controles de paginación */}
             {totalPages > 1 && (
-              <div className="flex justify-center items-center mt-12 gap-4">
-                <Button 
-                  onClick={goToPreviousPage} 
+              <div className="flex justify-center items-center mt-12 gap-2">
+                {/* Botón anterior */}
+                <button
+                  onClick={goToPreviousPage}
                   disabled={currentPage === 1}
-                  variant="outline"
-                  className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md shadow-sm"
+                  className={`cursor-pointer p-2 rounded-lg transition-all duration-200 ${currentPage === 1
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-white text-gray-700 hover:bg-amber-50 hover:text-amber-600 shadow-sm hover:shadow-md'
+                    }`}
+                  aria-label="Página anterior"
                 >
-                  <ChevronLeft className="w-5 h-5" /> Anterior
-                </Button>
-                
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-medium text-gray-700">
-                    Página {currentPage} de {totalPages}
-                  </span>
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+
+                {/* Números de página */}
+                <div className="flex items-center gap-1">
+                  {(() => {
+                    const pages = [];
+                    const showPages = 5; // Número de páginas a mostrar
+                    let startPage = Math.max(1, currentPage - Math.floor(showPages / 2));
+                    let endPage = Math.min(totalPages, startPage + showPages - 1);
+
+                    // Ajustar si estamos cerca del final
+                    if (endPage - startPage < showPages - 1) {
+                      startPage = Math.max(1, endPage - showPages + 1);
+                    }
+
+                    // Primera página
+                    if (startPage > 1) {
+                      pages.push(
+                        <button
+                          key={1}
+                          onClick={() => {
+                            setCurrentPage(1);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }}
+                          className="cursor-pointer min-w-[40px] h-10 px-3 rounded-lg bg-white text-gray-700 hover:bg-amber-50 hover:text-amber-600 transition-all duration-200 shadow-sm hover:shadow-md font-medium"
+                        >
+                          1
+                        </button>
+                      );
+
+                      if (startPage > 2) {
+                        pages.push(
+                          <span key="dots-start" className="px-2 text-gray-400">
+                            •••
+                          </span>
+                        );
+                      }
+                    }
+
+                    // Páginas del rango
+                    for (let i = startPage; i <= endPage; i++) {
+                      pages.push(
+                        <button
+                          key={i}
+                          onClick={() => {
+                            setCurrentPage(i);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }}
+                          className={`cursor-pointer min-w-[40px] h-10 px-3 rounded-lg transition-all duration-200 font-medium ${currentPage === i
+                            ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg scale-110'
+                            : 'bg-white text-gray-700 hover:bg-amber-50 hover:text-amber-600 shadow-sm hover:shadow-md'
+                            }`}
+                        >
+                          {i}
+                        </button>
+                      );
+                    }
+
+                    // Última página
+                    if (endPage < totalPages) {
+                      if (endPage < totalPages - 1) {
+                        pages.push(
+                          <span key="dots-end" className="px-2 text-gray-400">
+                            •••
+                          </span>
+                        );
+                      }
+
+                      pages.push(
+                        <button
+                          key={totalPages}
+                          onClick={() => {
+                            setCurrentPage(totalPages);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }}
+                          className="cursor-pointer min-w-[40px] h-10 px-3 rounded-lg bg-white text-gray-700 hover:bg-amber-50 hover:text-amber-600 transition-all duration-200 shadow-sm hover:shadow-md font-medium"
+                        >
+                          {totalPages}
+                        </button>
+                      );
+                    }
+
+                    return pages;
+                  })()}
                 </div>
-                
-                <Button 
-                  onClick={goToNextPage} 
+
+                {/* Botón siguiente */}
+                <button
+                  onClick={goToNextPage}
                   disabled={currentPage === totalPages}
-                  variant="outline"
-                  className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md shadow-sm"
+                  className={`cursor-pointer p-2 rounded-lg transition-all duration-200 ${currentPage === totalPages
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-white text-gray-700 hover:bg-amber-50 hover:text-amber-600 shadow-sm hover:shadow-md'
+                    }`}
+                  aria-label="Página siguiente"
                 >
-                  Siguiente <ChevronRight className="w-5 h-5" />
-                </Button>
+                  <ChevronRight className="w-5 h-5" />
+                </button>
               </div>
             )}
           </>
