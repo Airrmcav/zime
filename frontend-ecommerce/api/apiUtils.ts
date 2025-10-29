@@ -43,7 +43,7 @@ export function useFetchAPI(url: string, dependencies: any[] = []) {
  * @param populate Campos a popular
  * @returns URL completa
  */
-export function buildApiUrl(endpoint: string, filters: Record<string, any> = {}, populate: string = '*', pageSize: number = 100) {
+export function buildApiUrl(endpoint: string, filters: Record<string, any> = {}, populate: string = '*', pageSize: number = 500) {
   const baseUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${endpoint}`;  
   
   // Construir query params

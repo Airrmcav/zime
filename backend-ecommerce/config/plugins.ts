@@ -1,3 +1,4 @@
+// ./config/plugins.js
 module.exports = ({ env }) => ({
   upload: {
     config: {
@@ -13,4 +14,8 @@ module.exports = ({ env }) => ({
       },
     },
   },
+  graphql: false,
+  email: false,
+  sentry: false,
+  i18n: false,
 });
