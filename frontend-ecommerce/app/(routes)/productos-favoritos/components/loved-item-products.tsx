@@ -152,7 +152,7 @@ const LovedItemsProduct = ({ product, className }: LovedItemProductProps) => {
                     )}>
                         {product.images?.[0]?.url ? (
                             <img
-                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}`}
+                                src={`${product.images[0].url}`}
                                 alt={product.productName}
                                 className="w-full h-full object-contain p-2"
                             />
