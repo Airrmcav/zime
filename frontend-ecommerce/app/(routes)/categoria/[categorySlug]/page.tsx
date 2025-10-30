@@ -4,6 +4,7 @@ import { useGetProductsByArea } from "@/api/getProductsByArea"
 import { useGetProductsByCategory } from "@/api/getProductsByCategory"
 import { useGetProductsByCatalog } from "@/api/getProductsByCatalog"
 import { useGetAllProducts } from "@/api/getAllProducts"
+import { useGetCategoryInfo } from "@/api/getCategoryInfo"
 import { Separator } from "@/components/ui/separator";
 import { ResponseType } from "@/types/response";
 import { useParams, useRouter } from "next/navigation";
@@ -16,14 +17,20 @@ import { useState, useEffect } from "react";
 import FilterCategory from "./components/filter-category";
 import FilterArea from "./components/filter-area";
 import FilterCatalog from "./components/filter-catalog";
+import Pagination from "@/components/ui/pagination";
 
 export default function Page() {
     const params = useParams();
     const { categorySlug } = params;
+    // Normalizar a string para evitar union type string | string[]
+    const categorySlugStr: string = Array.isArray(categorySlug) ? (categorySlug[0] ?? '') : (categorySlug ?? '');
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 12;
 
     const { result: allProducts, loading: allProductsLoading, error: allProductsError }: ResponseType = useGetAllProducts();
-    const { result: categoryProducts, loading: categoryLoading, error: categoryError }: ResponseType = useGetCategoryProduct(categorySlug ?? "");
+    const { result: categoryProducts, loading: categoryLoading, error: categoryError }: ResponseType = useGetCategoryProduct(categorySlugStr);
+    const { categoryInfo, loading: categoryInfoLoading, error: categoryInfoError } = useGetCategoryInfo(categorySlugStr);
     const [filterArea, setFilterArea] = useState('');
     const [filterCategory, setFilterCategory] = useState('');
     const [filterCatalog, setFilterCatalog] = useState('');
@@ -162,7 +169,19 @@ export default function Page() {
             }
         }
     }
-    
+
+    // Resetear paginación al cambiar filtros o categoría
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [filterArea, filterCategory, filterCatalog, categorySlug]);
+
+    // Productos visibles según paginación
+    const safeFilteredProducts = Array.isArray(filteredProducts) ? filteredProducts : [];
+    const totalPages = Math.ceil(safeFilteredProducts.length / productsPerPage) || 1;
+    const startIndex = (currentPage - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+    const visibleProducts = safeFilteredProducts.slice(startIndex, endIndex);
+
     // Función para crear slugs consistente con la del navbar
     const createSlug = (text: string) => {
         return text
@@ -196,7 +215,7 @@ export default function Page() {
     return (
         <div className="min-h-screen bg-slate-50">
             {/* Header Banner - Nueva estructura tipo hero */}
-            {((categoryProducts !== null && !categoryLoading) || (categorySlug === 'todos' && allProducts !== null && !allProductsLoading)) && (
+            {!loading && (
                 <section className="bg-gradient-to-r from-slate-900 via-orange-900 to-slate-900 text-white relative overflow-hidden">
                     {/* Patrón de fondo */}
                     <div className="absolute inset-0 opacity-10">
@@ -233,7 +252,9 @@ export default function Page() {
                                         </>
                                     ) : (
                                         <>
-                                            <span className="block text-3xl text-orange-400">{categoryName}</span>
+                                            <span className="block text-3xl text-orange-400">
+                                                {categoryName}
+                                            </span>
                                             <span className="block text-5xl">Para tu Seguridad</span>
                                         </>
                                     )}
@@ -243,7 +264,9 @@ export default function Page() {
                                     {categorySlug === 'todos' ? (
                                         <>Equipamiento profesional de seguridad y componentes eléctricos. Cumplimos con las normativas más estrictas para proteger a tu equipo de trabajo.</>
                                     ) : (
-                                        <>Encuentra los mejores productos de <strong>{categoryName.toLowerCase()}</strong> con certificaciones internacionales y garantía de calidad.</>
+                                        <>
+                                            {categoryInfo?.descriptionCategory || `Encuentra los mejores productos de ${(categoryName || categoryName).toLowerCase()} con certificaciones internacionales y garantía de calidad.`}
+                                        </>
                                     )}
                                 </p>
 
@@ -251,10 +274,7 @@ export default function Page() {
                                 <div className="grid grid-cols-3 gap-6 pt-6 border-t border-slate-700">
                                     <div className="text-center">
                                         <div className="text-2xl font-bold text-orange-400">
-                                            {categorySlug === 'todos'
-                                                ? (Array.isArray(filteredProducts) ? filteredProducts.length : 0)
-                                                : (Array.isArray(categoryProducts) ? categoryProducts.length : 0)
-                                            }+
+                                            {Array.isArray(safeFilteredProducts) ? safeFilteredProducts.length : 0}+
                                         </div>
                                         <div className="text-sm text-slate-400">Productos</div>
                                     </div>
@@ -269,39 +289,50 @@ export default function Page() {
                                 </div>
                             </div>
 
-                            {/* Panel de características */}
-                            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                                <h3 className="font-semibold text-xl mb-4 text-orange-300">¿Por qué elegir nuestros productos?</h3>
-                                <div className="space-y-4">
-                                    <div className="flex items-start gap-3">
-                                        <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                            <Shield className="w-4 h-4 text-white" />
+                             {/* Imagen de categoría o panel de características */}
+                             {categoryInfo?.mainImage?.url ? (
+                                 <div className="relative rounded-2xl overflow-hidden">
+                                     <img 
+                                        src={categoryInfo.mainImage.url} 
+                                        alt={categoryInfo?.categoryName || categoryName}
+                                        className="w-full h-80 lg:h-96 object-contain"
+                                     />
+                                     
+                                 </div>
+                             ) : (
+                                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                                    <h3 className="font-semibold text-xl mb-4 text-orange-300">¿Por qué elegir nuestros productos?</h3>
+                                    <div className="space-y-4">
+                                        <div className="flex items-start gap-3">
+                                            <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                <Shield className="w-4 h-4 text-white" />
+                                            </div>
+                                            <div>
+                                                <h4 className="font-medium text-white">Certificación Internacional</h4>
+                                                <p className="text-sm text-slate-300">Todos nuestros EPP cumplen normativas CE, ANSI y OSHA</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <h4 className="font-medium text-white">Certificación Internacional</h4>
-                                            <p className="text-sm text-slate-300">Todos nuestros EPP cumplen normativas CE, ANSI y OSHA</p>
+                                        <div className="flex items-start gap-3">
+                                            <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                <Zap className="w-4 h-4 text-white" />
+                                            </div>
+                                            <div>
+                                                <h4 className="font-medium text-white">Material Eléctrico Premium</h4>
+                                                <p className="text-sm text-slate-300">Componentes de marcas reconocidas con garantía extendida</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="flex items-start gap-3">
-                                        <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                            <Zap className="w-4 h-4 text-white" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-medium text-white">Material Eléctrico Premium</h4>
-                                            <p className="text-sm text-slate-300">Componentes de marcas reconocidas con garantía extendida</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start gap-3">
-                                        <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                            <Package className="w-4 h-4 text-white" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-medium text-white">Stock Inmediato</h4>
-                                            <p className="text-sm text-slate-300">Entrega rápida desde nuestros almacenes regionales</p>
+                                        <div className="flex items-start gap-3">
+                                            <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                <Package className="w-4 h-4 text-white" />
+                                            </div>
+                                            <div>
+                                                <h4 className="font-medium text-white">Stock Inmediato</h4>
+                                                <p className="text-sm text-slate-300">Entrega rápida desde nuestros almacenes regionales</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </div>
                 </section>
@@ -488,6 +519,15 @@ export default function Page() {
                                         >
                                             <List className="w-4 h-4" />
                                         </button>
+                                        {safeFilteredProducts.length > 0 && totalPages > 1 && (
+                                            <div className="ml-3">
+                                                <Pagination
+                                                    currentPage={currentPage}
+                                                    totalPages={totalPages}
+                                                    onPageChange={setCurrentPage}
+                                                />
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -502,8 +542,8 @@ export default function Page() {
                             {loading && <SkeletonSchema grid={6} />}
 
                             {/* Productos */}
-                            {filteredProducts !== null && !loading && Array.isArray(filteredProducts) && 
-                                filteredProducts.map((product: ProductType) => (
+                            {visibleProducts !== null && !loading && Array.isArray(visibleProducts) && 
+                                visibleProducts.map((product: ProductType) => (
                                     <ProductCard
                                         key={product.id}
                                         product={product}
@@ -554,6 +594,18 @@ export default function Page() {
                                 </div>
                             )}
                         </div>
+                        {!loading && safeFilteredProducts.length > 0 && totalPages > 1 && (
+                            <div className="mt-6 flex items-center justify-center gap-4">
+                                <span className="text-sm text-gray-600">
+                                    {startIndex + 1}–{Math.min(endIndex, safeFilteredProducts.length)} de {safeFilteredProducts.length}
+                                </span>
+                                <Pagination
+                                    currentPage={currentPage}
+                                    totalPages={totalPages}
+                                    onPageChange={setCurrentPage}
+                                />
+                            </div>
+                        )}
                     </main>
                 </div>
             </div>

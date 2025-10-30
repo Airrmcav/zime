@@ -8,13 +8,16 @@ import ProductCard from "./components/product.card";
 import { ProductType } from "@/types/product";
 import { CatalogoType } from "@/types/catalogo";
 import { ArrowLeft, Grid3X3, List, Package, Shield, Zap, Settings, HardHat, AlertTriangle, ChevronDown, ChevronUp, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FilterCategory from "./components/filter-category";
+import Pagination from "@/components/ui/pagination";
 
 export default function Page() {
     const params = useParams();
     const { slug: catalogSlug } = params;
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 12;
     const [showFullDescription, setShowFullDescription] = useState(false);
     const [filterCategory, setFilterCategory] = useState('');
     const [filterArea, setFilterArea] = useState('');
@@ -61,6 +64,24 @@ export default function Page() {
     
     // Obtener la imagen del catálogo desde la estructura correcta
     const catalogImage = catalogoInfo?.attributes?.mainImage?.data || null;
+    
+    // Calcular productos filtrados y visibles según paginación
+    const safeFilteredProducts = Array.isArray(safeCatalogProducts)
+        ? safeCatalogProducts.filter((product: ProductType) => {
+            if (filterCategory && filterCategory !== '') {
+                if (!product.category) return false;
+                return (
+                    product.category.categoryName.toLowerCase() === filterCategory.toLowerCase()
+                );
+            }
+            return true;
+        })
+        : [];
+
+    const totalPages = Math.ceil(safeFilteredProducts.length / productsPerPage) || 1;
+    const startIndex = (currentPage - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+    const visibleProducts = safeFilteredProducts.slice(startIndex, endIndex);
     
     // Depuración
     // console.log("catalogSlug:", catalogSlug);
@@ -272,6 +293,15 @@ export default function Page() {
                                         >
                                             <List className="w-4 h-4" />
                                         </button>
+                                        {safeFilteredProducts.length > 0 && totalPages > 1 && (
+                                            <div className="ml-3">
+                                                <Pagination
+                                                    currentPage={currentPage}
+                                                    totalPages={totalPages}
+                                                    onPageChange={setCurrentPage}
+                                                />
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                                 
@@ -318,40 +348,14 @@ export default function Page() {
                             {loading && <SkeletonSchema grid={6} />}
 
                             {/* Productos */}
-                            {!loading && Array.isArray(safeCatalogProducts) && (
-                                safeCatalogProducts.filter((product: ProductType) => {
-                                    // Solo filtrar si hay una categoría seleccionada
-                                    if (filterCategory && filterCategory !== '') {
-                                        // Verificar si el producto tiene categoría
-                                        if (!product.category) return false;
-                                        
-                                        // Comparar usando categoryName en lugar de slug
-                                        return product.category.categoryName.toLowerCase() === filterCategory.toLowerCase();
-                                    }
-                                    // Si no hay filtro, mostrar todos los productos
-                                    return true;
-                                }).length > 0 ? (
-                                    safeCatalogProducts
-                                        .filter((product: ProductType) => {
-                                            // Solo filtrar si hay una categoría seleccionada
-                                            if (filterCategory && filterCategory !== '') {
-                                                // Verificar si el producto tiene categoría
-                                                if (!product.category) return false;
-                                                
-                                                // Comparar usando categoryName en lugar de slug
-                                                return product.category.categoryName.toLowerCase() === filterCategory.toLowerCase();
-                                            }
-                                            // Si no hay filtro, mostrar todos los productos
-                                            return true;
-                                        })
-                                        .map((product: ProductType) => (
-                                            <ProductCard
-                                                key={product.id}
-                                                product={product}
-                                                viewMode={viewMode}
-                                            />
-                                        ))
-                                ) : null
+                            {!loading && Array.isArray(visibleProducts) && visibleProducts.length > 0 && (
+                                visibleProducts.map((product: ProductType) => (
+                                    <ProductCard
+                                        key={product.id}
+                                        product={product}
+                                        viewMode={viewMode}
+                                    />
+                                ))
                             )}
                             
                             {/* Mostrar mensaje cuando no hay productos que coincidan con el filtro */}
@@ -380,7 +384,7 @@ export default function Page() {
                               )}
 
                             {/* Estado vacío */}
-                            {!loading && (!Array.isArray(safeCatalogProducts) || safeCatalogProducts.length === 0) && (
+                            {!loading && (!Array.isArray(safeFilteredProducts) || safeFilteredProducts.length === 0) && (
                                 <div className="col-span-full">
                                     <div className="bg-white rounded-xl shadow-sm border p-12 text-center">
                                         <div className="w-24 h-24 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-6">
@@ -411,6 +415,18 @@ export default function Page() {
                                 </div>
                             )}
                         </div>
+                        {!loading && safeFilteredProducts.length > 0 && totalPages > 1 && (
+                            <div className="mt-6 flex items-center justify-center gap-4">
+                                <span className="text-sm text-gray-600">
+                                    {startIndex + 1}–{Math.min(endIndex, safeFilteredProducts.length)} de {safeFilteredProducts.length}
+                                </span>
+                                <Pagination
+                                    currentPage={currentPage}
+                                    totalPages={totalPages}
+                                    onPageChange={setCurrentPage}
+                                />
+                            </div>
+                        )}
                     </main>
                 </div>
             </div>
