@@ -1,7 +1,7 @@
 "use client"
 
 import { useGetProductBySlug } from "@/api/getProductBySlug";
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import SkeletonProduct from "./components/skeleton-product";
 import CarouselProduct from "./components/carousel-product";
 
@@ -9,53 +9,67 @@ import InfoProduct from "./components/info-product";
 import RelatedProducts from "./components/related-products";
 import { ProductType } from "@/types/product";
 import { renderCharacteristics } from "./components/renderCharacteristics";
-import { FileText } from "lucide-react";
+import { FileText, ArrowLeft } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Page() {
     const params = useParams();
+    const router = useRouter();
     const productSlug = params?.productSlug;
-
-
     const category = params?.categorySlug || '';
+    const [returnUrl, setReturnUrl] = useState<string>('');
+    
+    // Regla de Hooks: evitar early return antes de llamar hooks
+    const safeSlug = typeof productSlug === 'string' ? productSlug : '';
+    const { result, loading, error } = useGetProductBySlug(safeSlug);
 
+    // Calcular el producto de forma segura (sin cortar hooks por returns)
+    const product = (Array.isArray(result) ? result[0] : undefined) as ProductType | undefined;
 
-    if (typeof productSlug === "undefined") {
-        return <SkeletonProduct />
-    }
-
-    const { result, loading, error } = useGetProductBySlug(productSlug);
-
-    console.log(result);
-
-    if (result == null || loading) {
-        return <SkeletonProduct />
-    }
-
-    // Hacer type assertion para asegurar que es ProductType
-    const product = result[0] as ProductType;
-
-    // Verificar que el producto existe y tiene las propiedades necesarias
-    if (!product) {
-        return <SkeletonProduct />
-    }
-
-    // Parsear las características si vienen como string JSON
+    // Parsear las características si vienen como string JSON (product puede ser undefined)
     let parsedCharacteristics: any = {};
     try {
-        if (product.characteristics) {
-            parsedCharacteristics = typeof product.characteristics === 'string'
-                ? JSON.parse(product.characteristics)
-                : product.characteristics;
+        const characteristics = product?.characteristics as unknown;
+        if (characteristics) {
+            parsedCharacteristics = typeof characteristics === 'string'
+                ? JSON.parse(characteristics as string)
+                : characteristics;
         }
     } catch (error) {
         console.error('Error parsing characteristics:', error);
         parsedCharacteristics = {};
     }
 
+    // Obtener la URL de retorno con la página guardada (hook siempre declarado)
+    useEffect(() => {
+        if (product && product.catalogo) {
+            const savedPage = sessionStorage.getItem(`catalog-page-${product.catalogo.slug}`);
+            const baseUrl = `/catalogo/${product.catalogo.slug}`;
+            setReturnUrl(savedPage ? `${baseUrl}?page=${savedPage}` : baseUrl);
+        }
+    }, [product]);
+
+    // Returns condicionales DESPUÉS de declarar hooks
+    if (!safeSlug || result == null || loading || !product) {
+        return <SkeletonProduct />
+    }
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30">
 
             <div className="max-w-7xl mx-auto py-10">
+                {/* Botón de volver al catálogo */}
+                {returnUrl && (
+                    <div className="mb-6">
+                        <button
+                            onClick={() => router.push(returnUrl)}
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-gray-200 hover:bg-gray-50 transition-colors text-gray-700 hover:text-gray-900"
+                        >
+                            <ArrowLeft className="w-4 h-4" />
+                            Volver al catálogo
+                        </button>
+                    </div>
+                )}
                 <div className="grid sm:grid-cols-2">
                     <div>
                         <CarouselProduct

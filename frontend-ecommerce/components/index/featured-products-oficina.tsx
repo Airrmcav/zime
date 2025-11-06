@@ -63,7 +63,7 @@ const FeaturedProductsOficina = () => {
                 </div>
                 <div className="flex justify-center w-full lg:w-auto">
                     <button
-                     onClick={() => router.push('/catalogo/epp')}
+                     onClick={() => router.push('/catalogo/equipo-de-oficina')}
                     className="cursor-pointer bg-blue-600 flex gap-2 text-white px-6 py-3 rounded-2xl font-medium hover:bg-gray-700 transition">
                         Ver más productos
                         <MoveRight />

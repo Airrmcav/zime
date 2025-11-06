@@ -2,7 +2,7 @@
 import { useGetProductsByCatalog } from "@/api/getProductsByCatalog"
 import { useGetAllProducts } from "@/api/getAllProducts"
 import { ResponseType } from "@/types/response";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams, usePathname } from "next/navigation";
 import SkeletonSchema from "@/components/skeletonSchema";
 import ProductCard from "./components/product.card";
 import { ProductType } from "@/types/product";
@@ -34,6 +34,8 @@ export default function Page() {
     // console.log("catalogInfo:", catalogInfo);
 
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
 
     let loading = categoryLoading;
     let error = categoryError;
@@ -65,6 +67,51 @@ export default function Page() {
     // Obtener la imagen del catálogo desde la estructura correcta
     const catalogImage = catalogoInfo?.attributes?.mainImage?.data || null;
     
+    // Sincronizar página inicial desde query o sessionStorage
+    useEffect(() => {
+        // Leer page de la URL si existe
+        const pageParam = searchParams.get('page');
+        if (pageParam) {
+            const parsed = parseInt(pageParam, 10);
+            if (!Number.isNaN(parsed) && parsed >= 1) {
+                setCurrentPage(parsed);
+                return;
+            }
+        }
+        // Fallback: leer de sessionStorage con ambos posibles slugs
+        const routeKey = `catalog-page-${Array.isArray(catalogSlug) ? catalogSlug[0] : catalogSlug}`;
+        const specialKey = (catalogSlug === 'epp')
+            ? 'catalog-page-equipo-de-proteccion-personal'
+            : undefined;
+        const saved = sessionStorage.getItem(routeKey) || (specialKey ? sessionStorage.getItem(specialKey) : null);
+        if (saved) {
+            const parsed = parseInt(saved, 10);
+            if (!Number.isNaN(parsed) && parsed >= 1) {
+                setCurrentPage(parsed);
+            }
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [catalogSlug]);
+
+    // Guardar cambios de página en sessionStorage y reflejar en la URL
+    useEffect(() => {
+        const routeSlug = Array.isArray(catalogSlug) ? catalogSlug[0] : catalogSlug;
+        if (!routeSlug) return;
+        const routeKey = `catalog-page-${routeSlug}`;
+        sessionStorage.setItem(routeKey, String(currentPage));
+        // Mapear alias especiales para coincidir con el slug del producto
+        if (routeSlug === 'epp') {
+            sessionStorage.setItem('catalog-page-equipo-de-proteccion-personal', String(currentPage));
+        }
+        // Actualizar query param ?page= en la URL sin recargar
+        if (pathname) {
+            const params = new URLSearchParams(searchParams.toString());
+            params.set('page', String(currentPage));
+            router.replace(`${pathname}?${params.toString()}`);
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentPage, catalogSlug]);
+
     // Calcular productos filtrados y visibles según paginación
     const safeFilteredProducts = Array.isArray(safeCatalogProducts)
         ? safeCatalogProducts.filter((product: ProductType) => {

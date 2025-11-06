@@ -119,6 +119,23 @@ const LuminariasClient = () => {
                         </div>
                     </div>
 
+                    {loading ? (
+                        <div className="mb-6 text-center">
+                            <div className="flex items-center justify-center gap-3">
+                                <div className="relative w-8 h-8">
+                                    <div className="absolute inset-0 rounded-full border-2 border-yellow-300 border-t-transparent animate-spin"></div>
+                                </div>
+                                <span className="inline-block px-4 py-2 bg-yellow-50 text-yellow-700 rounded-full font-medium">
+                                    Cargando productos Destacados
+                                </span>
+                            </div>
+                            <div className="mt-3 flex items-center justify-center gap-1">
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.0s]"></span>
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.15s]"></span>
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.3s]"></span>
+                            </div>
+                        </div>
+                    ) : null}
                     <FeaturedProducts products={result || []} />
 
                     {/* OPCIÓN 1: Botón después de los productos - MÁS RECOMENDADO */}
@@ -170,6 +187,23 @@ const LuminariasClient = () => {
                         </div>
                     </div>
 
+                    {loadingPhilco ? (
+                        <div className="mb-6 text-center">
+                            <div className="flex items-center justify-center gap-3">
+                                <div className="relative w-8 h-8">
+                                    <div className="absolute inset-0 rounded-full border-2 border-yellow-300 border-t-transparent animate-spin"></div>
+                                </div>
+                                <span className="inline-block px-4 py-2 bg-yellow-50 text-yellow-700 rounded-full font-medium">
+                                    Cargando productos Destacados
+                                </span>
+                            </div>
+                            <div className="mt-3 flex items-center justify-center gap-1">
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.0s]"></span>
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.15s]"></span>
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.3s]"></span>
+                            </div>
+                        </div>
+                    ) : null}
                     <FeaturedProducts products={resultPhilco || []} />
 
                     {/* Botón después de los productos */}
@@ -221,6 +255,23 @@ const LuminariasClient = () => {
                         </div>
                     </div>
 
+                    {loadingTecnoled ? (
+                        <div className="mb-6 text-center">
+                            <div className="flex items-center justify-center gap-3">
+                                <div className="relative w-8 h-8">
+                                    <div className="absolute inset-0 rounded-full border-2 border-yellow-300 border-t-transparent animate-spin"></div>
+                                </div>
+                                <span className="inline-block px-4 py-2 bg-yellow-50 text-yellow-700 rounded-full font-medium">
+                                    Cargando productos Destacados
+                                </span>
+                            </div>
+                            <div className="mt-3 flex items-center justify-center gap-1">
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.0s]"></span>
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.15s]"></span>
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.3s]"></span>
+                            </div>
+                        </div>
+                    ) : null}
                     <FeaturedProducts products={resultTecnoled || []} />
 
                     {/* Botón después de los productos */}
@@ -273,6 +324,23 @@ const LuminariasClient = () => {
                         </div>
                     </div>
 
+                    {loadingSupraAube ? (
+                        <div className="mb-6 text-center">
+                            <div className="flex items-center justify-center gap-3">
+                                <div className="relative w-8 h-8">
+                                    <div className="absolute inset-0 rounded-full border-2 border-yellow-300 border-t-transparent animate-spin"></div>
+                                </div>
+                                <span className="inline-block px-4 py-2 bg-yellow-50 text-yellow-700 rounded-full font-medium">
+                                    Cargando productos Destacados
+                                </span>
+                            </div>
+                            <div className="mt-3 flex items-center justify-center gap-1">
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.0s]"></span>
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.15s]"></span>
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.3s]"></span>
+                            </div>
+                        </div>
+                    ) : null}
                     <FeaturedProducts products={resultSupraAube || []} />
 
                     {/* Botón después de los productos */}
