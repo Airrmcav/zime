@@ -8,7 +8,7 @@ export function useGetFeaturedProductsLuminariasSupraAube() {
   // Construimos los filtros específicos
   const filters: Record<string, any> = {
     isFeatured: true,
-    marca: "SUPRA/AUBE"
+    marca: "SUPRA-AUBE"
   };
   
   // Construimos la URL con los filtros
