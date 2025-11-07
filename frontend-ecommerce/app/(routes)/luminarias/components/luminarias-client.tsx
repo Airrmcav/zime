@@ -346,7 +346,7 @@ const LuminariasClient = () => {
                     {/* Botón después de los productos */}
                     <div className="mt-12 flex justify-center">
                         <button
-                            onClick={() => router.push('/marca/SUPRA/AUBE')}
+                            onClick={() => router.push('/marca/SUPRA-AUBE')}
                             className="cursor-pointer group inline-flex items-center gap-2 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
                         >
                             Ver todos los productos SUPRA/AUBE
