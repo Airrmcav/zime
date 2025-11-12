@@ -107,15 +107,15 @@ const LuminariasClient = () => {
                     <div className="text-center mb-12">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full mb-4">
                             <Zap className="w-4 h-4 text-blue-600" aria-hidden="true" />
-                            <span className="text-sm font-medium text-blue-600">Material Eléctrico Profesional</span>
+                            <span className="text-sm font-medium text-blue-600">Luminarias Uso Profesional</span>
                         </div>
                         <h2 id="luceco-heading" className="text-4xl font-bold text-gray-900 mb-3">
-                            Material Eléctrico <span className="text-blue-600">LUCECO</span> - Iluminación LED y Equipos Eléctricos
+                            Luminarias <span className="text-blue-600">LUCECO</span> - Iluminación LED
                         </h2>
                         <p className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed">
-                            LUCECO es líder en soluciones de iluminación LED y material eléctrico profesional.
+                            LUCECO es líder en soluciones de iluminación LED.
                             Ofrecemos <strong>productos LUCECO</strong> de alta eficiencia energética:
-                            luminarias industriales, focos LED, paneles solares y material eléctrico certificado
+                            luminarias industriales, focos LED, paneles solares, equipo certificado
                             para instalaciones comerciales y residenciales en México.
                         </p>
 
@@ -179,21 +179,21 @@ const LuminariasClient = () => {
                             <span className="text-sm font-medium text-orange-600">Equipamiento Profesional Industrial</span>
                         </div>
                         <h2 id="philco-heading" className="text-4xl font-bold text-gray-900 mb-3">
-                            Herramientas <span className="text-orange-600">PHILCO</span> - Equipos Profesionales e Industriales
+                         <span className="text-orange-600">PHILCO</span> - Luminarias Profesionales e Industriales
                         </h2>
                         <p className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed">
-                            Encuentra las mejores <strong>herramientas PHILCO</strong>: equipos industriales,
-                            herramientas eléctricas, equipamiento profesional y soluciones para talleres.
-                            Durabilidad y rendimiento garantizado para profesionales y empresas en toda la República Mexicana.
-                        </p>
+    Descubre las <strong>luminarias PHILCO</strong> ideales para cada espacio. Diseñadas con tecnología LED de alta eficiencia, ofrecen iluminación uniforme, bajo consumo energético y larga vida útil. Perfectas para oficinas, áreas industriales, comercios y proyectos profesionales en toda la República Mexicana.
+</p>
 
                         {/* Keywords adicionales para SEO */}
                         <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm">
-                            <span className="px-3 py-1 bg-orange-50 text-orange-700 rounded-full">Herramientas Eléctricas</span>
-                            <span className="px-3 py-1 bg-orange-50 text-orange-700 rounded-full">Equipos Industriales</span>
-                            <span className="px-3 py-1 bg-orange-50 text-orange-700 rounded-full">Maquinaria Profesional</span>
-                            <span className="px-3 py-1 bg-orange-50 text-orange-700 rounded-full">Herramientas de Taller</span>
-                        </div>
+    <span className="px-3 py-1 bg-orange-50 text-orange-700 rounded-full">Luminarias Industriales</span>
+    <span className="px-3 py-1 bg-orange-50 text-orange-700 rounded-full">Luminarias para Oficinas</span>
+    <span className="px-3 py-1 bg-orange-50 text-orange-700 rounded-full">Luminarias Comerciales</span>
+    <span className="px-3 py-1 bg-orange-50 text-orange-700 rounded-full">Luminarias para Exterior</span>
+    <span className="px-3 py-1 bg-orange-50 text-orange-700 rounded-full">Iluminación LED Eficiente</span>
+</div>
+
                     </div>
 
                     {loadingPhilco ? (
@@ -229,10 +229,11 @@ const LuminariasClient = () => {
                     {/* Texto SEO adicional */}
                     <div className="mt-12 text-center max-w-4xl mx-auto">
                         <p className="text-gray-600 text-sm leading-relaxed">
-                            PHILCO ofrece equipamiento profesional de grado industrial para talleres,
-                            fábricas y proyectos de construcción. Herramientas de alta calidad con
-                            garantía de fábrica y servicio post-venta. Distribuidor autorizado en México.
-                        </p>
+    PHILCO ofrece luminarias LED de alta eficiencia para entornos industriales, comerciales y profesionales. 
+    Diseñadas para brindar máxima durabilidad, ahorro energético y excelente iluminación. 
+    Productos con garantía de fábrica y distribución autorizada en México.
+</p>
+
                     </div>
                 </div>
             </section>
