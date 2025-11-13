@@ -276,19 +276,19 @@ const Navbar = () => {
                                     </NavigationMenuList>
                                 </NavigationMenu>
 
-                                {/* Categorías destacadas */}
-                                {!categoriesLoading && sortedCategories && sortedCategories
-                                    .filter((category: CategoryType) => category.isFeatured)
-                                    .map((category: CategoryType) => (
-                                        <Link
-                                            key={category.id}
-                                            href={`/catalogo/${createSlug(category.categoryName)}`}
-                                            className="flex items-center text-gray-700 hover:text-orange-500 font-normal transition-colors"
-                                        >
-                                            {category.categoryName}
-                                        </Link>
-                                    ))
-                                }
+                               {/* Categorías destacadas */}
+{!categoriesLoading && sortedCategories && sortedCategories
+    .filter((category: CategoryType) => category.isFeatured)
+    .map((category: CategoryType) => (
+        <Link
+            key={category.id}
+            href={`/catalogo/${createSlug(category.categoryName)}`}
+            className="inline-flex items-center px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+        >
+            {category.categoryName}
+        </Link>
+    ))
+}
 
                                 <Link
                                     href="/luminarias"
