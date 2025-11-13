@@ -53,21 +53,21 @@ const ChooseCategory = () => {
                 {/* Header Section */}
                 <div className="text-left mb-5">
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600/10 via-orange-600/10 to-blue-600/10 border border-blue-200/50 rounded-full mb-3 backdrop-blur-sm">
-                        <Shield className="w-5 h-5 text-orange-600 animate-pulse" />
-                        <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent uppercase tracking-wider">
-                            EPP & Material Eléctrico
-                        </span>
-                        <Zap className="w-5 h-5 text-blue-600 animate-pulse" />
-                    </div>
+                   <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-yellow-400/10 via-blue-500/10 to-yellow-400/10 border border-blue-200/50 rounded-full mb-3 backdrop-blur-sm">
+    <Shield className="w-5 h-5 text-yellow-500 animate-pulse" />
+    <span className="text-sm font-semibold bg-gradient-to-r from-yellow-500 to-blue-600 bg-clip-text text-transparent uppercase tracking-wider">
+        Luminarias & Iluminación LED
+    </span>
+    <Zap className="w-5 h-5 text-blue-500 animate-pulse" />
+</div>
 
-                    {/* Main Title */}
-                    <h1 className="text-5xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight">
-                        <span className="block">Protección y</span>
-                        <span className="block bg-gradient-to-r from-orange-600 via-blue-500 to-orange-600 bg-clip-text text-transparent animate-gradient">
-                            Equipos Eléctricos
-                        </span>
-                    </h1>
+{/* Main Title */}
+<h1 className="text-5xl lg:text-5xl font-black text-gray-900 mb-3 leading-tight">
+    <span className="block">Iluminación</span>
+    <span className="block bg-gradient-to-r from-yellow-500 via-blue-500 to-yellow-500 bg-clip-text text-transparent animate-gradient">
+        Profesional y Eficiente
+    </span>
+</h1>
 
                     {/* Subtitle */}
                     <p className="text-xl lg:text-2xl text-gray-600 max-w-7xl  leading-relaxed font-light">
