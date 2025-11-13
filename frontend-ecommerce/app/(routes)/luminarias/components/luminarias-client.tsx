@@ -81,7 +81,7 @@ const LuminariasClient = () => {
         {marcas.map((marca, index) => (
             <div
                 key={index}
-                onClick={() => window.open(`https://zime.com.mx/marca/${marca.name}`, '_blank')}
+                onClick={() => window.location.href = `https://zime.com.mx/marca/${marca.name}`}
                 className="group bg-white backdrop-blur-md rounded-2xl p-1 flex items-center justify-center transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 cursor-pointer"
             >
                 <img
