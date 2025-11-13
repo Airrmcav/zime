@@ -39,7 +39,7 @@ const LuminariasClient = () => {
         { name: "LUCECO", logo: "luminarias/luceco.png", specialty: "Comercial" },
         { name: "PHILCO", logo: "luminarias/philco.png", specialty: "Residencial" },
         { name: "TECNOLED", logo: "luminarias/tecnoled.png", specialty: "LED Tech" },
-        { name: "SUPRA", logo: "luminarias/supra.png", specialty: "Profesional" },
+        { name: "SUPRA-AUBE", logo: "luminarias/supra.png", specialty: "Profesional" },
         { name: "LEDVANCE", logo: "luminarias/ledvance.png", specialty: "Smart LED" },
         { name: "LUMIANCE", logo: "luminarias/lumiance.png", specialty: "Smart LED" }
     ];
@@ -76,26 +76,29 @@ const LuminariasClient = () => {
                             </div>
                         </div>
 
-                        {/* Marcas */}
-                        <div className="mt-1">
-                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3 max-w-7xl mx-auto">
-                                {marcas.map((marca, index) => (
-                                    <div
-                                        key={index}
-                                        className="group bg-white backdrop-blur-md rounded-2xl p-1 flex items-center justify-center transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 cursor-pointer"
-                                    >
-                                        <img
-                                            src={marca.logo}
-                                            alt={marca.name}
-                                            className="h-12 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                            <p className="text-sm text-orange-200 mt-3 opacity-75 text-center">
-                                ⚡ Cada marca con garantía de fábrica y soporte técnico especializado
-                            </p>
-                        </div>
+                      {/* Marcas */}
+<div className="mt-1">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 max-w-7xl mx-auto">
+        {marcas.map((marca, index) => (
+            
+                key={index}
+                href={`https://zime.com.mx/marca/${marca.name}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-white backdrop-blur-md rounded-2xl p-1 flex items-center justify-center transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 cursor-pointer"
+            >
+                <img
+                    src={marca.logo}
+                    alt={marca.name}
+                    className="h-12 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                />
+            </a>
+        ))}
+    </div>
+    <p className="text-sm text-orange-200 mt-3 opacity-75 text-center">
+        ⚡ Cada marca con garantía de fábrica y soporte técnico especializado
+    </p>
+</div>
                     </div>
                 </div>
             </section>
