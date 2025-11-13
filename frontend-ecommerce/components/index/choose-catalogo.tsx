@@ -70,7 +70,7 @@ const ChooseCatalogo = () => {
                     <p className="text-xl lg:text-2xl text-gray-600 max-w-5xl leading-relaxed font-light">
                         Explora nuestra selección de catálogos especializados para encontrar{" "}
                         <span className="font-semibold text-orange-700">equipos de protección personal</span> y{" "}
-                        <span className="font-semibold text-blue-700">material eléctrico</span> de la más alta calidad.
+                        <span className="font-semibold text-blue-700">luminarias</span> de la más alta calidad.
                     </p>
                 </div>
 
