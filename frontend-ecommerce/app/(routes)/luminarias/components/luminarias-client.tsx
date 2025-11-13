@@ -75,8 +75,7 @@ const LuminariasClient = () => {
                                 <span className="font-semibold">Garantía Completa</span>
                             </div>
                         </div>
-
-                      {/* Marcas */}
+{/* Marcas */}
 <div className="mt-1">
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 max-w-7xl mx-auto">
         {marcas.map((marca, index) => (
