@@ -283,7 +283,7 @@ const Navbar = () => {
         <Link
             key={category.id}
             href={`/catalogo/${createSlug(category.categoryName)}`}
-            className="inline-flex items-center px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            className="inline-flex items-center px-1 py-1 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
         >
             {category.categoryName}
         </Link>
