@@ -71,12 +71,12 @@ const ChooseCategory = () => {
 
 
                     {/* Subtitle */}
-                    <p className="text-xl lg:text-2xl text-gray-600 max-w-7xl  leading-relaxed font-light">
-                        Descubre nuestra completa línea de{" "}
-                        <span className="font-semibold text-orange-700">equipos de protección personal</span> y{" "}
-                        <span className="font-semibold text-blue-700">material eléctrico especializado</span>.
-                        Calidad certificada para profesionales.
-                    </p>
+<p className="text-xl lg:text-2xl text-gray-600 max-w-7xl leading-relaxed font-light">
+    Descubre nuestra completa línea de{" "}
+    <span className="font-semibold text-orange-700">equipos de protección personal</span> y{" "}
+    <span className="font-semibold text-blue-700">luminarias LED profesionales</span>.{" "}
+    Calidad, eficiencia y seguridad para cada entorno de trabajo.
+</p>
 
                     {/* Stats */}
                     
