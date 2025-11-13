@@ -276,30 +276,30 @@ const Navbar = () => {
                                     </NavigationMenuList>
                                 </NavigationMenu>
 
-                               {/* Categorías destacadas */}
-{!categoriesLoading && sortedCategories && sortedCategories
-    .filter((category: CategoryType) => category.isFeatured)
-    .map((category: CategoryType) => (
-        <Link
-            key={category.id}
-            href={`/catalogo/${createSlug(category.categoryName)}`}
-            className="inline-flex items-center px-1 py-1 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-        >
-            {category.categoryName}
-        </Link>
-    ))
-}
+                                {/* Categorías destacadas */}
+                                {!categoriesLoading && sortedCategories && sortedCategories
+                                    .filter((category: CategoryType) => category.isFeatured)
+                                    .map((category: CategoryType) => (
+                                        <Link
+                                            key={category.id}
+                                            href={`/catalogo/${createSlug(category.categoryName)}`}
+                                            className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-sm text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                                        >
+                                            {category.categoryName}
+                                        </Link>
+                                    ))
+                                }
 
                                 <Link
                                     href="/luminarias"
-                                    className="flex items-center text-gray-700 hover:text-orange-500 font-normal transition-colors"
+                                    className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-sm text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                                 >
                                     Luminarias
                                 </Link>
 
                                 <Link
                                     href="/nosotros"
-                                    className="flex items-center text-gray-700 hover:text-orange-500 font-normal transition-colors"
+                                    className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-sm text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                                 >
                                     Nosotros
                                 </Link>
