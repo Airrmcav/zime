@@ -46,21 +46,22 @@ const FeaturedProductsElectric = () => {
         <div className="max-w-7xl my-5 mx-auto sm:py-0 sm:px-6 lg:px-8">
             {/* Header Section */}
             <div className="flex flex-col lg:flex-row items-center justify-between">
-                <div className="text-left mb-6 lg:mb-0">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-400 rounded-full mb-4">
-                        <ShieldCheck className="w-4 h-4 text-white" />
-                        <span className="text-sm font-medium text-white">
-                            Productos Destacados de Material Eléctrico
-                        </span>
-                    </div>
-                    <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                        Material Eléctrico de Calidad
-                    </h1>
-                    <p className="text-lg text-gray-600 max-w-4xl">
-                        Descubre cables, extensiones, conectores, contactos, apagadores y más,
-                        con la mejor calidad y seguridad para tus proyectos eléctricos.
-                    </p>
-                </div>
+               <div className="text-left mb-6 lg:mb-0">
+    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-400 rounded-full mb-4">
+        <ShieldCheck className="w-4 h-4 text-white" />
+        <span className="text-sm font-medium text-white">
+            Luminarias Destacadas para Todo Tipo de Espacios
+        </span>
+    </div>
+    <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+        Iluminación LED Profesional y Eficiente
+    </h1>
+    <p className="text-lg text-gray-600 max-w-4xl">
+        Encuentra luminarias LED para oficinas, industrias, exteriores y más.
+        Diseñadas para ofrecer máxima eficiencia energética, durabilidad y
+        una iluminación moderna que realza cada espacio.
+    </p>
+</div>
                 <div className="flex justify-center w-full lg:w-auto">
                     <button 
                     onClick={() => router.push('/catalogo/material-electrico')}
