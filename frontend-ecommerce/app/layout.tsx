@@ -84,6 +84,8 @@ export default function RootLayout({
 
         {/* Canonical URL */}
         <link rel="canonical" href="https://zime.com.mx" />
+        
+        <meta name="google-site-verification" content="aOqTSwBtyRYSmLt_ZROjCog8OdNQ63vJ-SoBxPgRXtQ" />
 
         {/* Structured Data - Organización */}
         <script

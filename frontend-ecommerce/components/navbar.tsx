@@ -93,7 +93,7 @@ const Navbar = () => {
 
                         {/* Iconos de acción desktop */}
                         <div className="hidden lg:flex items-center space-x-6">
-                            <button 
+                            <button
                                 className="cursor-pointer text-gray-600 flex gap-x-2 hover:text-orange-500 transition-colors"
                                 onClick={() => router.push("/productos-favoritos")}
                             >
@@ -283,7 +283,7 @@ const Navbar = () => {
                                         <Link
                                             key={category.id}
                                             href={`/catalogo/${createSlug(category.categoryName)}`}
-                                            className="flex items-center text-gray-700 hover:text-orange-500 font-normal transition-colors"
+                                            className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-sm text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                                         >
                                             {category.categoryName}
                                         </Link>
@@ -292,14 +292,14 @@ const Navbar = () => {
 
                                 <Link
                                     href="/luminarias"
-                                    className="flex items-center text-gray-700 hover:text-orange-500 font-normal transition-colors"
+                                    className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-sm text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                                 >
                                     Luminarias
                                 </Link>
 
                                 <Link
                                     href="/nosotros"
-                                    className="flex items-center text-gray-700 hover:text-orange-500 font-normal transition-colors"
+                                    className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-sm text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                                 >
                                     Nosotros
                                 </Link>
@@ -327,22 +327,22 @@ const Navbar = () => {
                     <div className="px-4 py-4 space-y-4">
                         {/* Enlaces principales */}
                         <div className="space-y-3">
-                            <Link 
-                                href="/categoria/todos" 
+                            <Link
+                                href="/categoria/todos"
                                 className="block text-gray-700 hover:text-orange-500 font-medium py-2"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Productos
                             </Link>
-                            <Link 
-                                href="/luminarias" 
+                            <Link
+                                href="/luminarias"
                                 className="block text-gray-700 hover:text-orange-500 font-medium py-2"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Luminarias
                             </Link>
-                            <Link 
-                                href="/nosotros" 
+                            <Link
+                                href="/nosotros"
                                 className="block text-gray-700 hover:text-orange-500 font-medium py-2"
                                 onClick={() => setIsMenuOpen(false)}
                             >
@@ -367,7 +367,7 @@ const Navbar = () => {
                         </div>
 
                         {/* Botón WhatsApp mobile */}
-                        <a 
+                        <a
                             href="https://wa.me/525560913395?text=Solicito%20asesoramiento%20sobre%20algunos%20productos.%20De%20la%20página%20de%20ZIME.COM.MX"
                             target="_blank"
                             rel="noopener noreferrer"

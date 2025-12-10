@@ -9,24 +9,33 @@ import { useGetFeaturedProductsLuminariasTecnoled } from "@/api/luminarias/useGe
 import { useGetFeaturedProductsLuminariasSupraAube } from "@/api/luminarias/useGetFeaturedProductsLuminariasSupraAube";
 import { ResponseType } from "@/types/response";
 import { useRouter } from "next/navigation";
+import { useGetFeaturedProductsLuminariasLumiance } from "@/api/luminarias/useGetFeaturedProductsLuminariasLumiance";
+
+import { useGetFeaturedProductsLuminariasLEDVANCE } from "@/api/luminarias/useGetFeaturedProductsLuminariasLEDVANCE";
 
 const LuminariasClient = () => {
     const router = useRouter();
-    
+
     // Obtenemos los productos destacados de luminarias LUCECO
     const { loading, result }: ResponseType = useGetFeaturedProductsLuminarias();
 
     // Obtenemos los productos destacados de luminarias PHILCO
     const { loading: loadingPhilco, result: resultPhilco }: ResponseType = useGetFeaturedProductsLuminariasPhilco();
-    
+
     // Obtenemos los productos destacados de luminarias TECNOLED
     const { loading: loadingTecnoled, result: resultTecnoled }: ResponseType = useGetFeaturedProductsLuminariasTecnoled();
-    
+
     // Obtenemos los productos destacados de luminarias SUPRA/AUBE
     const { loading: loadingSupraAube, result: resultSupraAube }: ResponseType = useGetFeaturedProductsLuminariasSupraAube();
 
+    // Obtenemos los productos destacados de luminarias LUMIANCE
+    const { loading: loadingLumiance, result: resultLumiance }: ResponseType = useGetFeaturedProductsLuminariasLumiance();
+
+    // Obtenemos los productos destacados de luminarias LEDVANCE
+    const { loading: loadingLEDVANCE, result: resultLEDVANCE }: ResponseType = useGetFeaturedProductsLuminariasLEDVANCE();
+
+
     const marcas = [
-        { name: "LUMAINCE", logo: "luminarias/ledvance.png", specialty: "LED Industrial" },
         { name: "LUCECO", logo: "luminarias/luceco.png", specialty: "Comercial" },
         { name: "PHILCO", logo: "luminarias/philco.png", specialty: "Residencial" },
         { name: "TECNOLED", logo: "luminarias/tecnoled.png", specialty: "LED Tech" },
@@ -104,9 +113,9 @@ const LuminariasClient = () => {
                             Material Eléctrico <span className="text-blue-600">LUCECO</span> - Iluminación LED y Equipos Eléctricos
                         </h2>
                         <p className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed">
-                            LUCECO es líder en soluciones de iluminación LED y material eléctrico profesional. 
-                            Ofrecemos <strong>productos LUCECO</strong> de alta eficiencia energética: 
-                            luminarias industriales, focos LED, paneles solares y material eléctrico certificado 
+                            LUCECO es líder en soluciones de iluminación LED y material eléctrico profesional.
+                            Ofrecemos <strong>productos LUCECO</strong> de alta eficiencia energética:
+                            luminarias industriales, focos LED, paneles solares y material eléctrico certificado
                             para instalaciones comerciales y residenciales en México.
                         </p>
 
@@ -242,7 +251,7 @@ const LuminariasClient = () => {
                         </h2>
                         <p className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed">
                             Descubre la innovación en <strong>iluminación TECNOLED</strong>: productos LED de última generación,
-                            eficientes energéticamente y con tecnología de vanguardia para aplicaciones residenciales, 
+                            eficientes energéticamente y con tecnología de vanguardia para aplicaciones residenciales,
                             comerciales e industriales en toda la República Mexicana.
                         </p>
 
@@ -288,9 +297,9 @@ const LuminariasClient = () => {
                     {/* Texto SEO adicional */}
                     <div className="mt-12 text-center max-w-4xl mx-auto">
                         <p className="text-gray-600 text-sm leading-relaxed">
-                            TECNOLED ofrece soluciones de iluminación LED de alta eficiencia para proyectos 
-                            residenciales, comerciales e industriales. Productos con garantía y certificación 
-                            que combinan innovación, ahorro energético y respeto al medio ambiente. 
+                            TECNOLED ofrece soluciones de iluminación LED de alta eficiencia para proyectos
+                            residenciales, comerciales e industriales. Productos con garantía y certificación
+                            que combinan innovación, ahorro energético y respeto al medio ambiente.
                             Distribuidor autorizado en México.
                         </p>
                     </div>
@@ -311,7 +320,7 @@ const LuminariasClient = () => {
                         </h2>
                         <p className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed">
                             Descubre la excelencia en <strong>iluminación SUPRA/AUBE</strong>: productos de alta calidad,
-                            diseño superior y rendimiento excepcional para aplicaciones residenciales, 
+                            diseño superior y rendimiento excepcional para aplicaciones residenciales,
                             comerciales e industriales en toda la República Mexicana.
                         </p>
 
@@ -346,7 +355,7 @@ const LuminariasClient = () => {
                     {/* Botón después de los productos */}
                     <div className="mt-12 flex justify-center">
                         <button
-                            onClick={() => router.push('/marca/SUPRA/AUBE')}
+                            onClick={() => router.push('/marca/SUPRA-AUBE')}
                             className="cursor-pointer group inline-flex items-center gap-2 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
                         >
                             Ver todos los productos SUPRA/AUBE
@@ -357,14 +366,152 @@ const LuminariasClient = () => {
                     {/* Texto SEO adicional */}
                     <div className="mt-12 text-center max-w-4xl mx-auto">
                         <p className="text-gray-600 text-sm leading-relaxed">
-                            SUPRA/AUBE ofrece soluciones de iluminación de alta calidad para proyectos 
-                            residenciales, comerciales e industriales. Productos con garantía y certificación 
-                            que combinan diseño, durabilidad y eficiencia. 
+                            SUPRA/AUBE ofrece soluciones de iluminación de alta calidad para proyectos
+                            residenciales, comerciales e industriales. Productos con garantía y certificación
+                            que combinan diseño, durabilidad y eficiencia.
                             Distribuidor autorizado en México.
                         </p>
                     </div>
                 </div>
             </section>
+
+            {/* Sección LUMIANCE */}
+            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50" aria-labelledby="lumiance-heading">
+                <div className="max-w-7xl mx-auto">
+                    {/* Header de sección */}
+                    <div className="text-center mb-12">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 rounded-full mb-4">
+                            <Star className="w-4 h-4 text-indigo-600" aria-hidden="true" />
+                            <span className="text-sm font-medium text-indigo-600">Iluminación Arquitectónica Premium</span>
+                        </div>
+                        <h2 id="lumiance-heading" className="text-4xl font-bold text-gray-900 mb-3">
+                            Iluminación <span className="text-indigo-600">Lumiance</span> - Diseño y Precisión Lumínica
+                        </h2>
+                        <p className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed">
+                            Experimenta la sofisticación con <strong>iluminación Lumiance</strong>: soluciones arquitectónicas premium,
+                            control lumínico preciso y diseño europeo para espacios comerciales, oficinas y proyectos
+                            de alto valor estético en toda la República Mexicana.
+                        </p>
+
+                        {/* Keywords adicionales para SEO */}
+                        <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm">
+                            <span className="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Iluminación Arquitectónica</span>
+                            <span className="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Control Lumínico</span>
+                            <span className="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Diseño Premium</span>
+                            <span className="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Iluminación Comercial</span>
+                        </div>
+                    </div>
+
+                    {loadingLumiance ? (
+                        <div className="mb-6 text-center">
+                            <div className="flex items-center justify-center gap-3">
+                                <div className="relative w-8 h-8">
+                                    <div className="absolute inset-0 rounded-full border-2 border-yellow-300 border-t-transparent animate-spin"></div>
+                                </div>
+                                <span className="inline-block px-4 py-2 bg-yellow-50 text-yellow-700 rounded-full font-medium">
+                                    Cargando productos Destacados
+                                </span>
+                            </div>
+                            <div className="mt-3 flex items-center justify-center gap-1">
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.0s]"></span>
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.15s]"></span>
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.3s]"></span>
+                            </div>
+                        </div>
+                    ) : null}
+                    <FeaturedProducts products={resultLumiance || []} />
+
+                    {/* Botón después de los productos */}
+                    <div className="mt-12 flex justify-center">
+                        <button
+                            onClick={() => router.push('/marca/LUMIANCE')}
+                            className="cursor-pointer group inline-flex items-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+                        >
+                            Ver todos los productos Lumiance
+                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </button>
+                    </div>
+
+                    {/* Texto SEO adicional */}
+                    <div className="mt-12 text-center max-w-4xl mx-auto">
+                        <p className="text-gray-600 text-sm leading-relaxed">
+                            Lumiance ofrece soluciones de iluminación arquitectónica premium con tecnología europea.
+                            Especialistas en proyectos comerciales, oficinas y espacios que requieren diseño superior
+                            y control lumínico preciso. Productos con garantía y soporte técnico especializado.
+                            Distribuidor autorizado en México.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Sección LEDVANCE */}
+            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white" aria-labelledby="ledvance-heading">
+                <div className="max-w-7xl mx-auto">
+                    {/* Header de sección */}
+                    <div className="text-center mb-12">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-50 rounded-full mb-4">
+                            <Zap className="w-4 h-4 text-cyan-600" aria-hidden="true" />
+                            <span className="text-sm font-medium text-cyan-600">Innovación LED Inteligente</span>
+                        </div>
+                        <h2 id="ledvance-heading" className="text-4xl font-bold text-gray-900 mb-3">
+                            Tecnología <span className="text-cyan-600">LEDVANCE</span> - El Futuro de la Iluminación LED
+                        </h2>
+                        <p className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed">
+                            Transforma tus espacios con <strong>iluminación LEDVANCE</strong>: heredera de OSRAM, líder mundial
+                            en tecnología LED inteligente, soluciones conectadas y productos de máxima eficiencia energética
+                            para aplicaciones residenciales, comerciales e industriales en toda la República Mexicana.
+                        </p>
+
+                        {/* Keywords adicionales para SEO */}
+                        <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm">
+                            <span className="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-full">Iluminación Inteligente</span>
+                            <span className="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-full">Smart LED</span>
+                            <span className="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-full">Tecnología OSRAM</span>
+                            <span className="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-full">Máxima Eficiencia</span>
+                        </div>
+                    </div>
+
+                    {loadingLEDVANCE ? (
+                        <div className="mb-6 text-center">
+                            <div className="flex items-center justify-center gap-3">
+                                <div className="relative w-8 h-8">
+                                    <div className="absolute inset-0 rounded-full border-2 border-yellow-300 border-t-transparent animate-spin"></div>
+                                </div>
+                                <span className="inline-block px-4 py-2 bg-yellow-50 text-yellow-700 rounded-full font-medium">
+                                    Cargando productos Destacados
+                                </span>
+                            </div>
+                            <div className="mt-3 flex items-center justify-center gap-1">
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.0s]"></span>
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.15s]"></span>
+                                <span className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce [animation-delay:.3s]"></span>
+                            </div>
+                        </div>
+                    ) : null}
+                    <FeaturedProducts products={resultLEDVANCE || []} />
+
+                    {/* Botón después de los productos */}
+                    <div className="mt-12 flex justify-center">
+                        <button
+                            onClick={() => router.push('/marca/LEDVANCE')}
+                            className="cursor-pointer group inline-flex items-center gap-2 px-8 py-4 bg-cyan-600 hover:bg-cyan-700 text-white font-medium rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+                        >
+                            Ver todos los productos LEDVANCE
+                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </button>
+                    </div>
+
+                    {/* Texto SEO adicional */}
+                    <div className="mt-12 text-center max-w-4xl mx-auto">
+                        <p className="text-gray-600 text-sm leading-relaxed">
+                            LEDVANCE, heredera de la tecnología OSRAM, ofrece las soluciones LED más avanzadas del mercado.
+                            Especialistas en iluminación inteligente, conectividad y productos de máxima eficiencia energética.
+                            Garantía internacional y soporte técnico especializado. Distribuidor autorizado en México.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
         </div>
     );
 };
