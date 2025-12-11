@@ -204,7 +204,7 @@ const InfoProduct = (props: InfoProductProps) => {
 
                 <div className="my-4">
                     <a
-                        href={`https://wa.me/5215560913395?text=Hola,%20me%20interesa%20cotizar%20este%20producto:%20${encodeURIComponent(product.productName)}.%20¿Podrías%20ayudarme%20con%20más%20información%20y%20precios?`}
+                        href={`https://wa.me/5215510070205?text=Hola,%20me%20interesa%20cotizar%20este%20producto:%20${encodeURIComponent(product.productName)}.%20¿Podrías%20ayudarme%20con%20más%20información%20y%20precios?`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full px-6 py-4 cursor-pointer bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 group inline-flex"
