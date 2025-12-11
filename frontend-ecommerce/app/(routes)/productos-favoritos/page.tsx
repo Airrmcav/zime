@@ -13,7 +13,7 @@ export default function Page() {
         const productsList = lovedItems.map(item => `- ${item.productName}`).join('\n');
         const message = `Hola , me gustaría recibir una cotización de los siguientes productos:\n${productsList}\n\nVengo de la página ZIME.COM.MX`;
         const encodedMessage = encodeURIComponent(message);
-        window.open(`https://wa.me/525560913395?text=${encodedMessage}`, '_blank');
+        window.open(`https://wa.me/5215510070205?text=${encodedMessage}`, '_blank');
     };
 
     return (
