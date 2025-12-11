@@ -58,11 +58,11 @@ const Navbar = () => {
                         <div className="flex flex-wrap justify-center sm:justify-end gap-3 sm:gap-4 text-xs sm:text-sm">
                             <div className="flex items-center space-x-1">
                                 <Phone className="w-3 h-3" />
-                                <span>+52 55 6091 3395</span>
+                                <span>+52 55 1007 0205</span>
                             </div>
                             <div className="flex items-center space-x-1">
                                 <Phone className="w-3 h-3" />
-                                <span>+52 55 6091 3395</span>
+                                <span>+52 55 1007 0205</span>
                             </div>
                             <div className="flex items-center space-x-1">
                                 <Mail className="w-3 h-3" />
