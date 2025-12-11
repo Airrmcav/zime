@@ -64,7 +64,7 @@ const SocialMediaLinks = () => {
                     onMouseLeave={() => setHoveredIcon(null)}
                 >
                     <a 
-                        href="https://api.whatsapp.com/send?phone=525560913395" 
+                        href="https://api.whatsapp.com/send?phone=525510070205" 
                         target="_blank"
                         className="cursor-pointer flex items-center justify-center bg-green-500 text-white p-4 rounded-full shadow-2xl transform transition-all duration-500 hover:scale-125 hover:rotate-12 animate-bounce"
                         style={{animationDuration: '2s'}}
