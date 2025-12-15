@@ -58,11 +58,11 @@ const Navbar = () => {
                         <div className="flex flex-wrap justify-center sm:justify-end gap-3 sm:gap-4 text-xs sm:text-sm">
                             <div className="flex items-center space-x-1">
                                 <Phone className="w-3 h-3" />
-                                <span>+52 55 6091 3395</span>
+                                <span>+52 55 1007 0205</span>
                             </div>
                             <div className="flex items-center space-x-1">
                                 <Phone className="w-3 h-3" />
-                                <span>+52 55 6091 3395</span>
+                                <span>+52 55 1007 0205</span>
                             </div>
                             <div className="flex items-center space-x-1">
                                 <Mail className="w-3 h-3" />
@@ -388,7 +388,7 @@ const Navbar = () => {
                             </div>
                             <div className="flex items-center space-x-2 text-gray-700">
                                 <Phone className="w-4 h-4 text-orange-500" />
-                                <span className="text-sm">+52 55 6091 3395</span>
+                                <span className="text-sm">+52 55 1007 0205</span>
                             </div>
                             <div className="flex items-center space-x-2 text-gray-700">
                                 <Mail className="w-4 h-4 text-orange-500" />
@@ -398,7 +398,7 @@ const Navbar = () => {
 
                         {/* Botón WhatsApp mobile */}
                         <a
-                            href="https://wa.me/525560913395?text=Solicito%20asesoramiento%20sobre%20algunos%20productos.%20De%20la%20página%20de%20ZIME.COM.MX"
+                            href="https://wa.me/525510070205?text=Solicito%20asesoramiento%20sobre%20algunos%20productos.%20De%20la%20página%20de%20ZIME.COM.MX"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center justify-center space-x-2 bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-3 rounded-lg hover:from-green-600 hover:to-green-700 transition-all"

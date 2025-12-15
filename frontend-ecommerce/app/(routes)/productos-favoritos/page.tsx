@@ -13,13 +13,12 @@ export default function Page() {
         const productsList = lovedItems.map(item => `- ${item.productName}`).join('\n');
         const message = `Hola , me gustaría recibir una cotización de los siguientes productos:\n${productsList}\n\nVengo de la página ZIME.COM.MX`;
         const encodedMessage = encodeURIComponent(message);
-        window.open(`https://wa.me/525560913395?text=${encodedMessage}`, '_blank');
+        window.open(`https://wa.me/525510070205?text=${encodedMessage}`, '_blank');
     };
 
     return (
         <div className="min-h-screen bg-gray-50">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-
                 {/* Header Section */}
                 <div className="mb-8">
                     <div className="flex items-center gap-4 mb-6">
