@@ -2,7 +2,7 @@
 "use client"
 import { useRouter } from "next/navigation";
 import React, { useState } from 'react';
-import { Search, Heart, ShoppingCart, Menu, X, Phone, Mail, MapPin, Package2, Loader2 } from 'lucide-react';
+import { Search, Heart, ShoppingCart, Menu, X, Phone, Mail, MapPin, Package2, Loader2, Shield, ChevronRight } from 'lucide-react';
 import { BsWhatsapp } from "react-icons/bs";
 import { useLovedProducts } from '@/hooks/use-loved-products';
 import { useCart } from '@/hooks/use-cart';
@@ -171,99 +171,129 @@ const Navbar = () => {
                                 <NavigationMenu>
                                     <NavigationMenuList>
                                         <NavigationMenuItem>
-                                            <NavigationMenuTrigger className="uppercase cursor-pointer bg-transparent max-w-[130px]">
-                                                Productos
+                                            <NavigationMenuTrigger className="uppercase cursor-pointer bg-transparent hover:bg-orange-50 data-[state=open]:bg-orange-50 transition-colors">
+                                                <Shield className="w-4 h-4 mr-2 text-orange-500" />
+                                                Productos EPP
                                             </NavigationMenuTrigger>
                                             <NavigationMenuContent>
-                                                <div className="w-[400px] lg:w-[100px] xl:w-[600px] capitalize">
-                                                    <div className="grid lg:grid-cols-[.75fr_1fr] gap-1 p-4">
-                                                        {/* Sección principal - lado izquierdo */}
-                                                        <div className="space-y-3 flex items-center">
-                                                            <div>
-                                                                <NavigationMenuLink
-                                                                    className="flex flex-col items-center text-center select-none space-y-3 rounded-md p-4 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 hover:border-blue-200 hover:shadow-md cursor-pointer"
-                                                                    onClick={() => router.push("/categoria/todos")}
-                                                                    asChild
-                                                                >
-                                                                    <a>
-                                                                        <div className="p-3 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl border border-blue-200">
-                                                                            <Package2 className="w-6 h-6 text-blue-600" />
-                                                                        </div>
-                                                                        <div className="space-y-1">
-                                                                            <div className="text-sm font-semibold leading-none text-blue-900">
-                                                                                Ver Todos los Productos
-                                                                            </div>
-                                                                            <p className="line-clamp-2 text-xs leading-snug text-blue-700">
-                                                                                Explora nuestra amplia gama de materiales eléctricos y equipo de protección personal para tus proyectos.
-                                                                            </p>
-                                                                        </div>
-                                                                    </a>
-                                                                </NavigationMenuLink>
+                                                <div className="w-[900px] capitalize h-96">
+                                                    {/* Header del menú */}
+                                                    
 
-                                                                {/* Contador de categorías */}
-                                                                <div className="flex items-center justify-center p-2 mt-2 bg-gray-50 rounded-lg border">
-                                                                    {categoriesLoading ? (
-                                                                        <div className="flex items-center gap-2 text-xs text-gray-500">
-                                                                            <Loader2 className="w-3 h-3 animate-spin" />
-                                                                            Cargando...
+                                                    <div className="grid grid-cols-[300px_1fr] gap-0">
+                                                        {/* Sección izquierda - Ver todos */}
+                                                        <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 border-r border-orange-200">
+                                                            <NavigationMenuLink
+                                                                className="flex flex-col h-62 select-none space-y-4 rounded-xl p-6 leading-none no-underline outline-none transition-all bg-white hover:bg-gradient-to-br hover:from-orange-500 hover:to-orange-600 hover:text-white border-2 border-orange-200 hover:border-orange-500 hover:shadow-xl group cursor-pointer"
+                                                                onClick={() => router.push("/categoria/todos")}
+                                                                asChild
+                                                            >
+                                                                <a>
+                                                                    <div className="flex items-center justify-center mb-4">
+                                                                        <div className="p-4 bg-gradient-to-br from-orange-400 to-orange-500 group-hover:from-white group-hover:to-white rounded-2xl shadow-lg group-hover:shadow-orange-200 transition-all">
+                                                                            <Package2 className="w-10 h-10 text-white group-hover:text-orange-500 transition-colors" />
                                                                         </div>
-                                                                    ) : (
-                                                                        <div className="text-xs text-gray-600 font-medium">
-                                                                            {sortedCategories.length} categorías disponibles
+                                                                    </div>
+                                                                    <div className="space-y-2 text-center">
+                                                                        
+                                                                        <p className="text-sm leading-relaxed text-orange-700 group-hover:text-orange-100 transition-colors">
+                                                                            Explora nuestra línea completa de equipos de protección personal certificados
+                                                                        </p>
+                                                                    </div>
+                                                                    <div className="mt-auto pt-1 flex items-center justify-center text-orange-600 group-hover:text-white transition-colors">
+                                                                        <span className="text-sm font-semibold">Ver productos</span>
+                                                                        <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                                                                    </div>
+                                                                </a>
+                                                            </NavigationMenuLink>
+
+                                                            {/* Contador de categorías */}
+                                                            <div className="mt-4 p-3 bg-white rounded-lg border border-orange-200 shadow-sm">
+                                                                {categoriesLoading ? (
+                                                                    <div className="flex items-center justify-center gap-2 text-xs text-orange-600">
+                                                                        <Loader2 className="w-3 h-3 animate-spin" />
+                                                                        Cargando...
+                                                                    </div>
+                                                                ) : (
+                                                                    <div className="text-center">
+                                                                        <div className="text-2xl font-bold text-orange-600">
+                                                                            {sortedCategories.length}
                                                                         </div>
-                                                                    )}
-                                                                </div>
+                                                                        <div className="text-xs text-orange-800 font-medium">
+                                                                            Categorías disponibles
+                                                                        </div>
+                                                                    </div>
+                                                                )}
                                                             </div>
                                                         </div>
 
                                                         {/* Lista de categorías - lado derecho */}
-                                                        <div className="space-y-1">
+                                                        <div className="bg-white p-6">
                                                             {categoriesLoading ? (
-                                                                <div className="flex items-center justify-center p-8">
-                                                                    <div className="flex flex-col items-center gap-2">
-                                                                        <Loader2 className="w-6 h-6 text-blue-600 animate-spin" />
-                                                                        <span className="text-xs text-gray-500">Cargando categorías...</span>
+                                                                <div className="flex items-center justify-center h-full">
+                                                                    <div className="flex flex-col items-center gap-3">
+                                                                        <Loader2 className="w-8 h-8 text-orange-500 animate-spin" />
+                                                                        <span className="text-sm text-gray-600 font-medium">Cargando categorías...</span>
                                                                     </div>
                                                                 </div>
                                                             ) : error ? (
-                                                                <div className="text-center p-4">
-                                                                    <p className="text-xs text-red-600">Error al cargar categorías</p>
+                                                                <div className="flex items-center justify-center h-full">
+                                                                    <div className="text-center p-6 bg-red-50 rounded-lg border border-red-200">
+                                                                        <p className="text-sm text-red-600 font-medium">Error al cargar categorías</p>
+                                                                    </div>
                                                                 </div>
                                                             ) : sortedCategories.length === 0 ? (
-                                                                <div className="text-center p-4">
-                                                                    <p className="text-xs text-gray-500">No hay categorías disponibles</p>
+                                                                <div className="flex items-center justify-center h-full">
+                                                                    <div className="text-center p-6 bg-gray-50 rounded-lg border border-gray-200">
+                                                                        <p className="text-sm text-gray-600">No hay categorías disponibles</p>
+                                                                    </div>
                                                                 </div>
                                                             ) : (
-                                                                <div className="max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-gray-100 pr-2">
-                                                                    <div className="space-y-1">
-                                                                        {sortedCategories.map((category: CategoryType) => (
-                                                                            <NavigationMenuLink key={category.id} asChild>
-                                                                                <Link
-                                                                                    href={`/categoria/${createSlug(category.categoryName)}`}
-                                                                                    className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:bg-blue-50 border border-transparent hover:border-blue-100 group"
-                                                                                >
-                                                                                    <div className="flex items-center gap-2">
-                                                                                        <div className="p-1 bg-blue-100 group-hover:bg-blue-200 rounded-md transition-colors">
-                                                                                            <Package2 className="w-3 h-3 text-blue-600" />
+                                                                <div className="space-y-2">
+                                                                    <div className="mb-4">
+                                                                        <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wide mb-1">Nuestras Categorías</h4>
+                                                                        <div className="h-1 w-16 bg-gradient-to-r from-orange-500 to-orange-300 rounded-full"></div>
+                                                                    </div>
+                                                                    
+                                                                    <div className="max-h-[260px] overflow-y-auto scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-orange-50 pr-3">
+                                                                        <div className="grid grid-cols-2 gap-2">
+                                                                            {sortedCategories.map((category: CategoryType) => (
+                                                                                <NavigationMenuLink key={category.id} asChild>
+                                                                                    <Link
+                                                                                        href={`/categoria/${createSlug(category.categoryName)}`}
+                                                                                        className="group block select-none rounded-lg p-4 leading-none no-underline outline-none transition-all hover:bg-gradient-to-br hover:from-orange-50 hover:to-orange-100 border border-gray-100 hover:border-orange-300 hover:shadow-md bg-white"
+                                                                                    >
+                                                                                        <div className="flex items-start gap-3">
+                                                                                            <div className="p-2 bg-orange-100 group-hover:bg-orange-500 rounded-lg transition-all group-hover:scale-110 flex-shrink-0">
+                                                                                                <Shield className="w-4 h-4 text-orange-600 group-hover:text-white transition-colors" />
+                                                                                            </div>
+                                                                                            <div className="flex-1 min-w-0">
+                                                                                                <div className="text-sm font-bold text-gray-900 group-hover:text-orange-600 transition-colors mb-1 leading-tight">
+                                                                                                    {category.categoryName}
+                                                                                                </div>
+                                                                                                <p className="text-xs leading-snug text-gray-600 group-hover:text-orange-700 transition-colors line-clamp-2">
+                                                                                                    Equipos certificados de {category.categoryName.toLowerCase()}
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-orange-500 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
                                                                                         </div>
-                                                                                        <div className="text-sm font-medium leading-none group-hover:text-blue-900">
-                                                                                            {category.categoryName}
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <p className="line-clamp-2 text-xs leading-snug text-muted-foreground group-hover:text-blue-700 ml-6">
-                                                                                        Productos de {category.categoryName.toLowerCase()} disponibles para equipos médicos profesionales.
-                                                                                    </p>
-                                                                                </Link>
-                                                                            </NavigationMenuLink>
-                                                                        ))}
+                                                                                    </Link>
+                                                                                </NavigationMenuLink>
+                                                                            ))}
+                                                                        </div>
                                                                     </div>
 
-                                                                    {/* Indicador de scroll */}
-                                                                    {sortedCategories.length > 5 && (
-                                                                        <div className="text-center py-2 border-t border-gray-100 mt-2">
-                                                                            <p className="text-xs text-gray-400">
-                                                                                ↕ Desliza para ver más
-                                                                            </p>
+                                                                    {/* Footer con indicador */}
+                                                                    {sortedCategories.length > 6 && (
+                                                                        <div className="mt-4 pt-3 border-t border-orange-100">
+                                                                            <div className="flex items-center justify-center gap-2 text-orange-600">
+                                                                                <div className="flex gap-1">
+                                                                                    <div className="w-1 h-1 bg-orange-400 rounded-full animate-bounce"></div>
+                                                                                    <div className="w-1 h-1 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                                                                                    <div className="w-1 h-1 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                                                                                </div>
+                                                                                <span className="text-xs font-medium">Desliza para ver más</span>
+                                                                            </div>
                                                                         </div>
                                                                     )}
                                                                 </div>
@@ -283,7 +313,7 @@ const Navbar = () => {
                                         <Link
                                             key={category.id}
                                             href={`/catalogo/${createSlug(category.categoryName)}`}
-                                            className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-sm text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                                            className="inline-flex items-center px-1 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                                         >
                                             {category.categoryName}
                                         </Link>
@@ -292,14 +322,14 @@ const Navbar = () => {
 
                                 <Link
                                     href="/luminarias"
-                                    className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-sm text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                                    className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                                 >
                                     Luminarias
                                 </Link>
 
                                 <Link
                                     href="/nosotros"
-                                    className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-sm text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                                    className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                                 >
                                     Nosotros
                                 </Link>
