@@ -9,7 +9,7 @@ export function useGetFeaturedProductsLuminariasLEDVANCE() {
   const filters: Record<string, any> = {
     isFeatured: true,
     catalogo: {
-      slug: { $eq: "material-electrico" }
+      slug: { $eq: "luminarias" }
     },
     marca: { $eq: "LEDVANCE" }
   };

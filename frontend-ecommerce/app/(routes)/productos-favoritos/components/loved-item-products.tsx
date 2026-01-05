@@ -35,7 +35,7 @@ const LovedItemsProduct = ({ product, className }: LovedItemProductProps) => {
     const cartItem = items.find(item => item.id === product.id);
 
     // Función para determinar si es material eléctrico basado en el slug del catálogo
-    const isElectricalProduct = product.catalogo?.slug === 'material-electrico';
+    const isElectricalProduct = product.catalogo?.slug === 'luminarias';
 
     // Función para obtener el icono y colores basado en el catálogo
     const getCategoryInfo = () => {

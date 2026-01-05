@@ -324,7 +324,7 @@ const Navbar = () => {
                                     href="/luminarias"
                                     className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                                 >
-                                    Luminarias
+                                    Luminarias por marca
                                 </Link>
 
                                 <Link

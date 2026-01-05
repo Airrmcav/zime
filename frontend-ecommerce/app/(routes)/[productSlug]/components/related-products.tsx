@@ -165,11 +165,11 @@ export default function RelatedProducts({ currentProduct, catalogSlug }: Related
 
                         {/* Category Badge */}
                         <div className="absolute bottom-3 left-3">
-                          <Badge className={`${product.catalogo.slug === "material-electrico" 
+                          <Badge className={`${product.catalogo.slug === "luminarias" 
                             ? 'bg-blue-600 hover:bg-blue-700'
                             : 'bg-orange-600 hover:bg-orange-700'
                             } text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1.5`}>
-                            {product.catalogo.slug === "material-electrico" ? (
+                            {product.catalogo.slug === "luminarias" ? (
                               <Zap className="w-3 h-3" />
                             ) : (
                               <Shield className="w-3 h-3" />
@@ -181,7 +181,7 @@ export default function RelatedProducts({ currentProduct, catalogSlug }: Related
 
                       {/* Content */}
                       <div className="p-4 flex-1 flex flex-col min-h-[220px]">
-                        <h2 className={`font-bold text-lg mb-2 line-clamp-2 transition-colors duration-200 min-h-[56px] flex items-start ${product.catalogo.slug === "material-electrico"
+                        <h2 className={`font-bold text-lg mb-2 line-clamp-2 transition-colors duration-200 min-h-[56px] flex items-start ${product.catalogo.slug === "luminarias"
                             ? 'text-blue-600'
                             : 'text-orange-600'
                           }`}>

@@ -122,7 +122,7 @@ export default function MarcaContent({ marcaName }: MarcaContentProps) {
                       )}
                       {product.catalogo && (
                         <Badge className="bg-blue-500 hover:bg-blue-600">
-                          {product.catalogo.slug === 'material-electrico' ? (
+                          {product.catalogo.slug === 'luminarias' ? (
                             <Zap className="h-3 w-3 mr-1" />
                           ) : (
                             <Shield className="h-3 w-3 mr-1" />

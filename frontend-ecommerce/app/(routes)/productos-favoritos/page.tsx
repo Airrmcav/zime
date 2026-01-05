@@ -152,7 +152,7 @@ export default function Page() {
                                     <p className="text-sm text-gray-600">Equipo de Protección</p>
                                 </button>
                                 <button
-                                    onClick={() => router.push("/categoria/material-electrico")}
+                                    onClick={() => router.push("/categoria/luminarias")}
                                     className="bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-xl p-4 transition-colors group"
                                 >
                                     <Zap className="w-8 h-8 text-blue-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
