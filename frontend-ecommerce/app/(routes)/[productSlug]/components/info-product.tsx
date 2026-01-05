@@ -40,7 +40,7 @@ const InfoProduct = (props: InfoProductProps) => {
     const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
     // Configuración según el tipo de catálogo
-    const isElectrical = catalogSlug === 'material-electrico';
+    const isElectrical = catalogSlug === 'luminarias';
     const colorConfig = {
         primary: isElectrical ? 'blue' : 'orange',
         // Botones principales

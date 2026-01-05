@@ -19,7 +19,7 @@ const CartItem = (props: CartItemProps) => {
     const [isUpdating, setIsUpdating] = useState(false);
 
     // Detectar si es material eléctrico
-    const isElectrical = product.catalogo?.slug === 'material-electrico';
+    const isElectrical = product.catalogo?.slug === 'luminarias';
 
     // Colores dinámicos según categoría
     const colors = {

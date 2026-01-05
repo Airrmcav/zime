@@ -21,8 +21,8 @@ const ProductCard = (props: ProductCardProps) => {
   const { addLoveItems } = useLovedProducts();
 
   // Detectar si es material eléctrico
-  const isMaterialElectrico = product.catalogo.slug === "material-electrico" ||
-    product?.catalogo?.slug === "material-electrico" ||
+  const isMaterialElectrico = product.catalogo.slug === "luminarias" ||
+    product?.catalogo?.slug === "luminarias" ||
     product?.category?.categoryName?.toLowerCase().includes("eléctrico") ||
     product?.category?.categoryName?.toLowerCase().includes("electrico");
 

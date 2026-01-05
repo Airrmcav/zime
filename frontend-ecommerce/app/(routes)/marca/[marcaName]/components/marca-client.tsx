@@ -229,7 +229,7 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
             <div className="mb-8 flex items-center justify-between">
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-                  <Sparkles className="w-8 h-8 text-amber-500" />
+                  <Sparkles className="w-8 h-8 text-blue-500" />
                   Catálogo Completo
                 </h2>
                 <p className="text-gray-600 mt-2">
@@ -256,7 +256,7 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
                           />
                         ) : (
                           <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-amber-50 to-orange-50">
-                            <Lightbulb className="w-16 h-16 text-amber-300 mb-2" />
+                            <Lightbulb className="w-16 h-16 text-blue-300 mb-2" />
                             <span className="text-gray-400">Sin imagen</span>
                           </div>
                         )}
@@ -308,7 +308,7 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
                       {/* Category Badge */}
                       <div className="absolute bottom-2 left-2">
                         <Badge
-                          className="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1.5"
+                          className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1.5"
                         >
                           <Shield className="w-3 h-3" />
                           {product?.category?.categoryName || "Categoría"}
@@ -320,7 +320,7 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
                   {/* Content */}
                   <div className="p-4 flex-1 flex flex-col min-h-[220px]">
                     <Link href={`/producto/${product.slug || product.id}`}>
-                      <h2 className="font-bold text-lg mb-2 line-clamp-2 transition-colors duration-200 min-h-[56px] flex items-start text-amber-600 hover:text-amber-700">
+                      <h2 className="font-bold text-lg mb-2 line-clamp-2 transition-colors duration-200 min-h-[56px] flex items-start text-blue-600 hover:text-blue-700">
                         {product.productName || `Producto ${marcaName}`}
                       </h2>
                     </Link>

@@ -35,7 +35,7 @@ const CarouselText = () => {
             image: 'carousel/3.png',
             badge: 'DESTACADO',
             badgeColor: 'bg-yellow-500',
-            catalogoSlug: '/catalogo/material-electrico',
+            catalogoSlug: '/catalogo/luminarias',
 
         },
         {

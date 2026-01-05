@@ -34,7 +34,7 @@ export default function Cart() {
     }
 
     const totalItems = items.length;
-    const hasElectricalItems = items.some(item => item.category?.slug === 'material-electrico');
+    const hasElectricalItems = items.some(item => item.category?.slug === 'luminarias');
 
     const handleRemoveAll = () => {
         if (items.length > 0) {

@@ -54,8 +54,8 @@ export default function Page() {
     if (catalogSlug === 'epp') {
         catalogName = 'Equipo de Protección Personal';
         catalogDescription = 'Encuentra los mejores equipos de protección personal certificados bajo las normativas internacionales. Garantizamos la seguridad de tu personal con productos de la más alta calidad.';
-    } else if (catalogSlug === 'material-electrico') {
-        catalogName = 'Material Eléctrico';
+    } else if (catalogSlug === 'luminarias') {
+        catalogName = 'Luminarias';
         catalogDescription = 'Descubre nuestra amplia gama de materiales eléctricos de alta calidad. Productos certificados que cumplen con los estándares más exigentes para tus instalaciones eléctricas.';
     } else {
         // Acceder directamente a los campos del catálogo para otros casos

@@ -20,7 +20,7 @@ const FeaturedProducts = ({ products = [] }: FeaturedProductProps) => {
 
   // Detectar si es material eléctrico
   const isMaterialElectrico = (product: ProductType) => {
-    return product.catalogo?.slug === "material-electrico" ||
+    return product.catalogo?.slug === "luminarias" ||
       product?.category?.categoryName?.toLowerCase().includes("eléctrico") ||
       product?.category?.categoryName?.toLowerCase().includes("electrico");
   };

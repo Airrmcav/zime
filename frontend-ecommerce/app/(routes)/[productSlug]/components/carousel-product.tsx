@@ -27,7 +27,7 @@ const CarouselProduct = (props: CarouselProductProps) => {
     const { addLoveItems } = useLovedProducts();
 
     // Configuración según el tipo de catálogo
-    const isElectrical = catalogSlug === 'material-electrico';
+    const isElectrical = catalogSlug === 'luminarias';
     const colorConfig = {
         primary: isElectrical ? 'blue' : 'orange',
         bgColor: isElectrical ? 'bg-blue-500' : 'bg-orange-500',
