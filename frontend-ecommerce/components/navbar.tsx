@@ -165,7 +165,7 @@ const Navbar = () => {
 
                 {/* Menú de navegación desktop */}
                 <div className="bg-white py-2">
-                    <div className="max-w-7xl mx-auto px-4">
+                    <div className="max-w-7xl mx-auto px-0">
                         <div className="hidden lg:flex items-center justify-between py-1">
                             <div className="flex space-x-3 uppercase">
                                 <NavigationMenu>
@@ -182,15 +182,15 @@ const Navbar = () => {
 
                                                     <div className="grid grid-cols-[300px_1fr] gap-0">
                                                         {/* Sección izquierda - Ver todos */}
-                                                        <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 border-r border-orange-200">
+                                                        <div className="bg-linear-to-br from-orange-50 to-orange-100 p-6 border-r border-orange-200">
                                                             <NavigationMenuLink
-                                                                className="flex flex-col h-62 select-none space-y-4 rounded-xl p-6 leading-none no-underline outline-none transition-all bg-white hover:bg-gradient-to-br hover:from-orange-500 hover:to-orange-600 hover:text-white border-2 border-orange-200 hover:border-orange-500 hover:shadow-xl group cursor-pointer"
+                                                                className="flex flex-col h-62 select-none space-y-4 rounded-xl p-6 leading-none no-underline outline-none transition-all bg-white hover:bg-linear-to-br hover:from-orange-500 hover:to-orange-600 hover:text-white border-2 border-orange-200 hover:border-orange-500 hover:shadow-xl group cursor-pointer"
                                                                 onClick={() => router.push("/categoria/todos")}
                                                                 asChild
                                                             >
                                                                 <a>
                                                                     <div className="flex items-center justify-center mb-4">
-                                                                        <div className="p-4 bg-gradient-to-br from-orange-400 to-orange-500 group-hover:from-white group-hover:to-white rounded-2xl shadow-lg group-hover:shadow-orange-200 transition-all">
+                                                                        <div className="p-4 bg-linear-to-br from-orange-400 to-orange-500 group-hover:from-white group-hover:to-white rounded-2xl shadow-lg group-hover:shadow-orange-200 transition-all">
                                                                             <Package2 className="w-10 h-10 text-white group-hover:text-orange-500 transition-colors" />
                                                                         </div>
                                                                     </div>
@@ -252,7 +252,7 @@ const Navbar = () => {
                                                                 <div className="space-y-2">
                                                                     <div className="mb-4">
                                                                         <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wide mb-1">Nuestras Categorías</h4>
-                                                                        <div className="h-1 w-16 bg-gradient-to-r from-orange-500 to-orange-300 rounded-full"></div>
+                                                                        <div className="h-1 w-16 bg-linear-to-r from-orange-500 to-orange-300 rounded-full"></div>
                                                                     </div>
                                                                     
                                                                     <div className="max-h-[260px] overflow-y-auto scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-orange-50 pr-3">
@@ -261,10 +261,10 @@ const Navbar = () => {
                                                                                 <NavigationMenuLink key={category.id} asChild>
                                                                                     <Link
                                                                                         href={`/categoria/${createSlug(category.categoryName)}`}
-                                                                                        className="group block select-none rounded-lg p-4 leading-none no-underline outline-none transition-all hover:bg-gradient-to-br hover:from-orange-50 hover:to-orange-100 border border-gray-100 hover:border-orange-300 hover:shadow-md bg-white"
+                                                                                        className="group block select-none rounded-lg p-4 leading-none no-underline outline-none transition-all hover:bg-linear-to-br hover:from-orange-50 hover:to-orange-100 border border-gray-100 hover:border-orange-300 hover:shadow-md bg-white"
                                                                                     >
                                                                                         <div className="flex items-start gap-3">
-                                                                                            <div className="p-2 bg-orange-100 group-hover:bg-orange-500 rounded-lg transition-all group-hover:scale-110 flex-shrink-0">
+                                                                                            <div className="p-2 bg-orange-100 group-hover:bg-orange-500 rounded-lg transition-all group-hover:scale-110 shrink-0">
                                                                                                 <Shield className="w-4 h-4 text-orange-600 group-hover:text-white transition-colors" />
                                                                                             </div>
                                                                                             <div className="flex-1 min-w-0">
@@ -275,7 +275,7 @@ const Navbar = () => {
                                                                                                     Equipos certificados de {category.categoryName.toLowerCase()}
                                                                                                 </p>
                                                                                             </div>
-                                                                                            <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-orange-500 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
+                                                                                            <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-orange-500 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
                                                                                         </div>
                                                                                     </Link>
                                                                                 </NavigationMenuLink>
@@ -333,6 +333,12 @@ const Navbar = () => {
                                 >
                                     Nosotros
                                 </Link>
+                                <Link
+                                    href="/postes"
+                                    className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                                >
+                                    Postes
+                                </Link>
                             </div>
 
                             <div className='flex gap-x-6 uppercase text-gray-700'>
@@ -354,7 +360,7 @@ const Navbar = () => {
             {/* Menú mobile desplegable */}
             {isMenuOpen && (
                 <div className="lg:hidden bg-white border-b border-gray-200 shadow-lg">
-                    <div className="px-4 py-4 space-y-4">
+                    <div className="px-1 py-4 space-y-4">
                         {/* Enlaces principales */}
                         <div className="space-y-3">
                             <Link
@@ -377,6 +383,13 @@ const Navbar = () => {
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Nosotros
+                            </Link>
+                             <Link
+                                href="/postes"
+                                className="block text-gray-700 hover:text-orange-500 font-medium py-2"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                Postes
                             </Link>
                         </div>
 
@@ -401,7 +414,7 @@ const Navbar = () => {
                             href="https://wa.me/525510070205?text=Solicito%20asesoramiento%20sobre%20algunos%20productos.%20De%20la%20página%20de%20ZIME.COM.MX"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-center space-x-2 bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-3 rounded-lg hover:from-green-600 hover:to-green-700 transition-all"
+                            className="flex items-center justify-center space-x-2 bg-linear-to-r from-green-500 to-green-600 text-white px-4 py-3 rounded-lg hover:from-green-600 hover:to-green-700 transition-all"
                         >
                             <BsWhatsapp className="w-5 h-5" />
                             <span className="font-medium">Asesoría WhatsApp</span>

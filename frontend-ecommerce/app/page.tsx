@@ -15,6 +15,8 @@ export default function Home() {
   return (
     <div>
       <CarouselText />
+      <main>
+
       <FeaturedProducts/>
       <FeaturedProductsElectric/>
       <FeaturedProductsCajas />
@@ -22,6 +24,7 @@ export default function Home() {
       <FeaturedProductsLimpieza />
       <ChooseCatalogo/>
       <ChooseCategory/>
+      </main>
       
       {/* <ActionPrice/> */}
       {/* <Marcas/> */}
