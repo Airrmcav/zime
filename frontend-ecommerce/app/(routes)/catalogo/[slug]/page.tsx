@@ -277,7 +277,7 @@ export default function Page() {
                     {/* Sidebar */}
                     <aside className="lg:col-span-1 space-y-6">
                         {/* Panel de información de seguridad */}
-                        <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-4 border border-orange-200">
+                        <div className="bg-linear-to-br from-orange-50 to-red-50 rounded-xl p-4 border border-orange-200">
                             <div className="flex items-center gap-2 mb-3">
                                 <HardHat className="w-5 h-5 text-orange-600" />
                                 <h4 className="font-semibold text-orange-900">Info de Seguridad</h4>
