@@ -205,7 +205,7 @@ const Navbar = () => {
 
         {/* Menú de navegación desktop */}
         <div className="bg-white py-2">
-          <div className="max-w-7xl mx-auto px-4">
+          <div className="max-w-7xl mx-auto px-0">
             <div className="hidden lg:flex items-center justify-between py-1">
               <div className="flex space-x-3 uppercase">
                 <NavigationMenu>
@@ -399,6 +399,12 @@ const Navbar = () => {
                   className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                 >
                   Nosotros
+                </Link>
+                <Link
+                  href="/postes"
+                  className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                >
+                  Postes
                 </Link>
               </div>
 
