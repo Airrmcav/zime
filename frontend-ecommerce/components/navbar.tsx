@@ -410,7 +410,7 @@ const Navbar = () => {
 
               <div className="flex gap-x-6 uppercase text-gray-700">
                 <a
-                  href="https://wa.me/525560913395?text=Solicito%20asesoramiento%20sobre%20algunos%20productos.%20De%20la%20página%20de%20ZIME.COM.MX"
+                  href="https://wa.me/5215510070205?text=Solicito%20asesoramiento%20sobre%20algunos%20productos.%20De%20la%20página%20de%20ZIME.COM.MX"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-1 hover:text-orange-500 transition-colors"

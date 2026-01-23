@@ -18,25 +18,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }
       );
 
-      if (!res.ok) {
-        console.error(`Error al obtener productos para el sitemap (página ${currentPage})`);
-        break;
-      }
+      // if (!res.ok) {
+      //   console.error(`Error al obtener productos para el sitemap (página ${currentPage})`);
+      //   break;
+      // }
 
       const json = await res.json();
 
-      if (!json?.data || !Array.isArray(json.data)) {
-        console.error("Formato inesperado de productos", json);
-        break;
-      }
+      // if (!json?.data || !Array.isArray(json.data)) {
+      //   console.error("Formato inesperado de productos", json);
+      //   break;
+      // }
 
       // Log para depuración (solo en la primera página)
-      if (currentPage === 1) {
-        console.log(`Total productos en página ${currentPage}:`, json.data.length);
-        if (json.data.length > 0) {
-          console.log("Ejemplo de estructura de producto:", JSON.stringify(json.data[0], null, 2));
-        }
-      }
+      // if (currentPage === 1) {
+      //   console.log(`Total productos en página ${currentPage}:`, json.data.length);
+      //   if (json.data.length > 0) {
+      //     console.log("Ejemplo de estructura de producto:", JSON.stringify(json.data[0], null, 2));
+      //   }
+      // }
 
       // Agregar productos de esta página
       allProducts = allProducts.concat(json.data);
@@ -44,7 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       // Verificar si hay más páginas
       const pagination = json.meta?.pagination;
       if (pagination) {
-        console.log(`Página ${currentPage} de ${pagination.pageCount}, total: ${pagination.total}`);
+        // console.log(`Página ${currentPage} de ${pagination.pageCount}, total: ${pagination.total}`);
         hasMorePages = currentPage < pagination.pageCount;
         currentPage++;
       } else {
@@ -57,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  console.log(`Total productos obtenidos: ${allProducts.length}`);
+  // console.log(`Total productos obtenidos: ${allProducts.length}`);
 
   // Filtrar y mapear productos válidos
   // Strapi puede devolver productos con estructura { id, attributes: { slug } } o ya transformados
@@ -83,7 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     }));
 
-  console.log(`Productos válidos para sitemap: ${products.length}`);
+  // console.log(`Productos válidos para sitemap: ${products.length}`);
 
   // Obtener todas las categorías
   const categoriesApiUrl = "https://ecommerce-zime-production.up.railway.app/api/categories";
@@ -100,22 +100,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }
       );
 
-      if (!res.ok) {
-        console.error(`Error al obtener categorías para el sitemap (página ${categoryPage})`);
-        break;
-      }
+      // if (!res.ok) {
+      //   console.error(`Error al obtener categorías para el sitemap (página ${categoryPage})`);
+      //   break;
+      // }
 
       const json = await res.json();
 
-      if (!json?.data || !Array.isArray(json.data)) {
-        console.error("Formato inesperado de categorías", json);
-        break;
-      }
+      // if (!json?.data || !Array.isArray(json.data)) {
+      //   console.error("Formato inesperado de categorías", json);
+      //   break;
+      // }
 
-      // Log para depuración (solo en la primera página)
-      if (categoryPage === 1) {
-        console.log(`Total categorías en página ${categoryPage}:`, json.data.length);
-      }
+      // // Log para depuración (solo en la primera página)
+      // if (categoryPage === 1) {
+      //   console.log(`Total categorías en página ${categoryPage}:`, json.data.length);
+      // }
 
       // Agregar categorías de esta página
       allCategories = allCategories.concat(json.data);
@@ -123,7 +123,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       // Verificar si hay más páginas
       const pagination = json.meta?.pagination;
       if (pagination) {
-        console.log(`Categorías - Página ${categoryPage} de ${pagination.pageCount}, total: ${pagination.total}`);
+        // console.log(`Categorías - Página ${categoryPage} de ${pagination.pageCount}, total: ${pagination.total}`);
         hasMoreCategoryPages = categoryPage < pagination.pageCount;
         categoryPage++;
       } else {
@@ -135,7 +135,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  console.log(`Total categorías obtenidas: ${allCategories.length}`);
+  // console.log(`Total categorías obtenidas: ${allCategories.length}`);
 
   // Filtrar y mapear categorías válidas
   const categories = allCategories
@@ -160,7 +160,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     }));
 
-  console.log(`Categorías válidas para sitemap: ${categories.length}`);
+  // console.log(`Categorías válidas para sitemap: ${categories.length}`);
 
   // Obtener todas las marcas
   // Primero intentar obtener de un endpoint específico, si no existe, extraer de productos
@@ -199,7 +199,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             }
           }
         }
-        console.log(`Total marcas obtenidas del endpoint: ${allMarcas.length}`);
+        // console.log(`Total marcas obtenidas del endpoint: ${allMarcas.length}`);
       } else {
         useMarcasEndpoint = false;
       }
@@ -233,7 +233,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
     
     allMarcas = Array.from(marcasSet).map(name => ({ nameMarca: name }));
-    console.log(`Total marcas únicas extraídas de productos: ${allMarcas.length}`);
+    // console.log(`Total marcas únicas extraídas de productos: ${allMarcas.length}`);
   }
 
   // Filtrar y mapear marcas válidas
@@ -259,7 +259,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     }));
 
-  console.log(`Marcas válidas para sitemap: ${marcas.length}`);
+  // console.log(`Marcas válidas para sitemap: ${marcas.length}`);
 
   // URLs estáticas de marcas principales
   const staticMarcas = [
