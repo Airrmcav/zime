@@ -115,9 +115,9 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
   };
 
   return (
-    <div className="bg-gradient-to-b from-slate-50 to-white min-h-screen">
+    <div className="bg-linear-to-b from-slate-50 to-white min-h-screen">
       {/* Header Mejorado */}
-      <div className="relative bg-gradient-to-br from-amber-500 via-yellow-500 to-orange-500 overflow-hidden">
+      <div className="relative bg-linear-to-br from-amber-500 via-yellow-500 to-orange-500 overflow-hidden">
         {/* Patrón decorativo */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
@@ -125,7 +125,7 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
           <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-white rounded-full blur-2xl"></div>
         </div>
 
-        <div className="container mx-auto max-w-7xl relative z-10 py-12 px-4">
+        <div className="container mx-auto max-w-7xl relative z-10 py-12 px-8">
           <Link
             href="/luminarias"
             className="inline-flex items-center text-white mb-8 hover:translate-x-1 transition-transform duration-200 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full font-medium"
@@ -178,7 +178,9 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
             {/* Logo de la marca */}
             {result && Array.isArray(result) && result.length > 0 &&
               (result[0] as ProductType).marcaProduct?.mainImage && (
-                <div className="w-full lg:w-1/3 flex justify-center">
+                <button
+                 onClick={() => router.push(`/marca/${marcaName}`)}
+                className="w-full lg:w-1/3 flex justify-center">
                   <div className="bg-white p-8 rounded-2xl shadow-2xl border-4 border-white/50 backdrop-blur-sm transform hover:scale-105 transition-transform duration-300">
                     <img
                       src={`${process.env.NEXT_PUBLIC_BACKEND_URL || ''}${(result[0] as ProductType).marcaProduct?.mainImage?.url || ''}`}
@@ -186,7 +188,7 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
                       className="max-h-48 w-full object-contain"
                     />
                   </div>
-                </div>
+                </button>
               )}
           </div>
         </div>
@@ -217,7 +219,7 @@ function MarcaClientBase({ marcaName }: MarcaClientProps) {
       </div>
 
       {/* Products Grid */}
-      <div className="container mx-auto max-w-7xl py-16 px-4 ">
+      <div className="container mx-auto max-w-7xl py-5 px-10 ">
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[...Array(products.length || 4)].map((_, i) => (

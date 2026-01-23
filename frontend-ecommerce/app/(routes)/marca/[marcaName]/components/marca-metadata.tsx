@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: { params: { marcaName: string
   const { marcaName = "" } = await params;
   
   // Obtener información de la marca desde la API
-  let description = `Descubre nuestra selección completa de productos ${marcaName}. Calidad y rendimiento garantizado para profesionales y empresas.`;
+  let description = `Explora el catálogo ${marcaName}, distribuidores oficiales de luminarias LED. Soluciones de iluminación profesional para proyectos industriales, comerciales y residenciales, con productos certificados, alta eficiencia energética y respaldo técnico.`;
   
   try {
     if (marcaName) {
@@ -28,17 +28,17 @@ export async function generateMetadata({ params }: { params: { marcaName: string
   }
   
   return {
-    title: `Catálogo de Productos ${marcaName || 'de nuestra marca'} | Zime Iluminación LED`,
+    title: `Catálogo ${marcaName} | Distribuidores Oficiales de Luminarias LED`,
     description: description,
     openGraph: {
-      title: `Catálogo de productos ${marcaName || 'de nuestra marca'} | Zime Iluminación LED`,
+      title: `Catálogo ${marcaName} | Distribuidores Oficiales de Luminarias LED`,
       description: description,
       images: [
         {
           url: '/logo/logo-zime.png',
           width: 800,
           height: 600,
-          alt: `Catálogo de productos ${marcaName || 'de nuestra marca'}`,
+          alt: `Explora el catálogo ${marcaName}, distribuidores oficiales de luminarias LED. Soluciones de iluminación profesional para proyectos industriales, comerciales y residenciales, con productos certificados, alta eficiencia energética y respaldo técnico.`,
         },
       ],
     },

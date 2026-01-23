@@ -44,9 +44,9 @@ export default function MarcaContent({ marcaName }: MarcaContentProps) {
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen ">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-500 to-blue-600 py-12 px-4">
+      <div className="bg-linear-to-r from-blue-500 to-blue-600 py-12 px-4">
         <div className="container mx-auto max-w-7xl">
           <Link
             href="/luminarias"
