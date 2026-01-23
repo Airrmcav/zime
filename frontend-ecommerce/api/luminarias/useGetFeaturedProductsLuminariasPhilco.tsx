@@ -8,7 +8,7 @@ export function useGetFeaturedProductsLuminariasPhilco() {
   // Construimos los filtros específicos
   const filters: Record<string, any> = {
     isFeatured: true,
-    marca: "TECNOLED"
+    marca: "PHILCO"
   };
   
   // Construimos la URL con los filtros
