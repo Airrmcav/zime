@@ -80,7 +80,8 @@ const LuminariasClient = () => {
                         <div className="mt-1">
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 max-w-7xl mx-auto">
                                 {marcas.map((marca, index) => (
-                                    <div
+                                    <button
+                                    onClick={() => router.push(`/marca/${marca.name}`)}
                                         key={index}
                                         className="group bg-white backdrop-blur-md rounded-2xl p-1 flex items-center justify-center transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 cursor-pointer"
                                     >
@@ -89,7 +90,7 @@ const LuminariasClient = () => {
                                             alt={marca.name}
                                             className="h-12 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                                         />
-                                    </div>
+                                    </button>
                                 ))}
                             </div>
                             <p className="text-sm text-orange-200 mt-3 opacity-75 text-center">
