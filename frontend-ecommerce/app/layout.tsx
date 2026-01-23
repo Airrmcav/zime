@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   category: 'industrial',
   classification: 'Materiales Eléctricos y EPP',
   other: {
-    'contact:phone_number': '+52 55 6091 3395',
+    'contact:phone_number': '+52 55 1007 0205',
     'contact:country_name': 'México',
     'DC.title': 'ZIME - Materiales Eléctricos y Equipo de Protección Personal',
     'DC.creator': 'ZIME',
@@ -100,7 +100,7 @@ export default function RootLayout({
               "logo": "https://zime.com.mx/logo/logo.webp",
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+52 55 6091 3395",
+                "telephone": "+52 55 1007 0205",
                 "contactType": "customer service",
                 "areaServed": "MX",
                 "availableLanguage": "Spanish"
