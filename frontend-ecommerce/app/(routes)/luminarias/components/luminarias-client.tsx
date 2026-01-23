@@ -39,7 +39,7 @@ const LuminariasClient = () => {
         { name: "LUCECO", logo: "luminarias/luceco.png", specialty: "Comercial" },
         { name: "PHILCO", logo: "luminarias/philco.png", specialty: "Residencial" },
         { name: "TECNOLED", logo: "luminarias/tecnoled.png", specialty: "LED Tech" },
-        { name: "SUPRA", logo: "luminarias/supra.png", specialty: "Profesional" },
+        { name: "SUPRA-AUBE", logo: "luminarias/supra.png", specialty: "Profesional" },
         { name: "LEDVANCE", logo: "luminarias/ledvance.png", specialty: "Smart LED" },
         { name: "LUMIANCE", logo: "luminarias/lumiance.png", specialty: "Smart LED" }
     ];
