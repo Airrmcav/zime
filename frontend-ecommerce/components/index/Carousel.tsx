@@ -26,7 +26,7 @@ const CarouselText = () => {
         {
             id: 2,
             type: 'lighting',
-            title: 'Material eléctrico',
+            title: 'Luminarias Industriales, Comerciales y Residenciales | Venta e Iluminación LED',
             subtitle: 'Reflectores, Paneles y Lámparas',
             description: 'Ilumina tus proyectos con nuestra línea de luminarias LED de alta eficiencia y durabilidad.',
             buttonText: 'Ver Luminarias',
