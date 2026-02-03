@@ -7,21 +7,54 @@ import { Filter, Loader2, Package } from "lucide-react";
 type FiltersCatalogProps = {
   setFilterCatalog: (catalog: string) => void;
   filterCatalog: string;
-  setFilterArea: (area: string) => void;
-  setFilterCategory: (category: string) => void;
+  setFilterArea?: (area: string) => void;
+  setFilterCategory?: (category: string) => void;
+  theme?: "blue" | "orange";
 };
 
 const FilterCatalog = (props: FiltersCatalogProps) => {
-  const { setFilterCatalog, filterCatalog, setFilterArea, setFilterCategory } =
-    props;
+  const {
+    setFilterCatalog,
+    filterCatalog,
+    setFilterArea,
+    setFilterCategory,
+    theme = "orange",
+  } = props;
   const { result, loading, error }: FilterTypes = useGetProductField();
 
+  const themeColors = {
+    blue: {
+      gradient: "from-blue-100 to-indigo-100",
+      text: "text-blue-600",
+      border: "border-blue-100",
+      hover: "hover:border-blue-200 hover:bg-blue-50/30",
+      bg: "bg-blue-50",
+      indicator: "from-blue-500 to-indigo-500",
+      dot: "bg-blue-400",
+      loading: "text-blue-600",
+    },
+    orange: {
+      gradient: "from-orange-100 to-amber-100",
+      text: "text-orange-600",
+      border: "border-orange-100",
+      hover: "hover:border-orange-200 hover:bg-orange-50/30",
+      bg: "bg-orange-50",
+      indicator: "from-orange-500 to-amber-500",
+      dot: "bg-orange-400",
+      loading: "text-orange-600",
+    },
+  };
+
+  const colors = themeColors[theme];
+
   return (
-    <div className="bg-white rounded-2xl border border-blue-100 shadow-lg p-2 my-2">
+    <div
+      className={`bg-white rounded-2xl border ${colors.border} shadow-lg p-6 my-4`}
+    >
       {/* Header Section */}
       <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 bg-linear-to-r from-orange-100 to-amber-100 rounded-xl">
-          <Package className="w-5 h-5 text-orange-600" />
+        <div className={`p-2 bg-gradient-to-r ${colors.gradient} rounded-xl`}>
+          <Package className={`w-5 h-5 ${colors.text}`} />
         </div>
         <div>
           <h3 className="text-xl font-bold text-gray-900">
@@ -34,18 +67,26 @@ const FilterCatalog = (props: FiltersCatalogProps) => {
       </div>
 
       {/* Decorative Line */}
-      <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full mb-4"></div>
+      <div
+        className={`w-16 h-1 bg-gradient-to-r ${colors.indicator} rounded-full mb-4`}
+      ></div>
 
       {/* Loading State */}
       {loading && (
         <div className="flex items-center justify-center py-3">
           <div className="flex flex-col items-center gap-3">
-            <Loader2 className="w-8 h-8 text-orange-600 animate-spin" />
+            <Loader2 className={`w-8 h-8 ${colors.loading} animate-spin`} />
             <p className="text-gray-600 font-medium">Cargando catálogos...</p>
             <div className="flex gap-1">
-              <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce"></div>
-              <div className="w-2 h-2 bg-orange-500 rounded-full animate-bounce delay-100"></div>
-              <div className="w-2 h-2 bg-orange-600 rounded-full animate-bounce delay-200"></div>
+              <div
+                className={`w-2 h-2 ${colors.dot} rounded-full animate-bounce`}
+              ></div>
+              <div
+                className={`w-2 h-2 ${colors.dot} rounded-full animate-bounce delay-100`}
+              ></div>
+              <div
+                className={`w-2 h-2 ${colors.dot} rounded-full animate-bounce delay-200`}
+              ></div>
             </div>
           </div>
         </div>
@@ -63,8 +104,12 @@ const FilterCatalog = (props: FiltersCatalogProps) => {
             <RadioGroup
               onValueChange={(value) => {
                 // Al seleccionar un catálogo, limpiamos los otros filtros
-                setFilterArea("");
-                setFilterCategory("");
+                if (setFilterArea) {
+                  setFilterArea("");
+                }
+                if (setFilterCategory) {
+                  setFilterCategory("");
+                }
                 setFilterCatalog(value);
               }}
               value={filterCatalog}
@@ -82,16 +127,20 @@ const FilterCatalog = (props: FiltersCatalogProps) => {
                     .replace(/-+/g, "-"); // Evitar guiones múltiples
                   return (
                     <div key={index} className="group relative">
-                      <div className="flex items-center space-x-4 p-2 rounded-xl border-2 border-gray-100 hover:border-blue-200 hover:bg-blue-50/30 transition-all duration-300 cursor-pointer">
+                      <div
+                        className={`flex items-center space-x-4 p-2 rounded-xl border-2 border-gray-100 ${colors.hover} transition-all duration-300 cursor-pointer`}
+                      >
                         <RadioGroupItem
                           value={catalogSlug}
                           id={catalogSlug}
-                          className="text-blue-600 border-2 border-gray-300 group-hover:border-blue-400 transition-colors duration-200"
+                          className={`${colors.text} border-2 border-gray-300 transition-colors duration-200`}
                         />
 
                         {/* Icon */}
-                        <div className="p-2 rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 group-hover:from-blue-100 group-hover:to-indigo-100 transition-colors duration-300">
-                          <Package className="w-4 h-4 text-blue-600 group-hover:text-blue-700" />
+                        <div
+                          className={`p-2 rounded-lg bg-gradient-to-br ${colors.gradient} transition-colors duration-300`}
+                        >
+                          <Package className={`w-4 h-4 ${colors.text}`} />
                         </div>
 
                         <Label
@@ -102,21 +151,18 @@ const FilterCatalog = (props: FiltersCatalogProps) => {
                         </Label>
 
                         {/* Hover indicator */}
-                        <div className="w-2 h-2 rounded-full bg-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div
+                          className={`w-2 h-2 rounded-full ${colors.dot} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                        ></div>
                       </div>
 
                       {/* Selection indicator line */}
                       <div
-                        className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-indigo-500 rounded-r-full ${filterCatalog === catalogSlug ? "opacity-100" : "opacity-0"}`}
+                        className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${colors.indicator} rounded-r-full ${filterCatalog === catalogSlug ? "opacity-100" : "opacity-0"}`}
                       ></div>
                     </div>
                   );
                 },
-              )}
-              {/* Agregar un console.log para depuración */}
-              {console.log(
-                "Catálogos disponibles en el componente:",
-                result.schema.attributes.catalogo.enum,
               )}
             </RadioGroup>
 
@@ -124,13 +170,13 @@ const FilterCatalog = (props: FiltersCatalogProps) => {
             <div className="mt-6 pt-4 border-t border-gray-100">
               <div className="flex items-center justify-between">
                 <p className="text-sm text-gray-600">
-                  <span className="font-semibold text-blue-600">
+                  <span className={`font-semibold ${colors.text}`}>
                     {result.schema.attributes.catalogo.enum.length}
                   </span>{" "}
                   catálogos disponibles
                 </p>
                 <div className="flex items-center gap-1 text-xs text-gray-500">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <div className={`w-2 h-2 ${colors.dot} rounded-full`}></div>
                   <span>Filtros activos</span>
                 </div>
               </div>
