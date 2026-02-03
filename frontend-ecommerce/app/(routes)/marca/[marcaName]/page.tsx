@@ -1,10 +1,14 @@
-import MarcaClient from "./components/marca-client";
+import MarcaContent from "./components/marca-content";
 import { generateMetadata } from "./components/marca-metadata";
 
 export { generateMetadata };
 
-export default async function MarcaPage({ params }: { params: { marcaName: string } }) {
+export default async function MarcaPage({
+  params,
+}: {
+  params: { marcaName: string };
+}) {
   // Asegurarse de que params y marcaName existan antes de pasarlos
   const { marcaName = "" } = await params;
-  return <MarcaClient marcaName={marcaName} />;
+  return <MarcaContent marcaName={marcaName} />;
 }
