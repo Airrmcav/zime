@@ -260,12 +260,9 @@ export default function Page() {
       .trim();
   };
 
-  // Obtener el nombre de la categoría basado en el slug
   let categoryName = categorySlug === "todos" ? "Todos los Productos" : "";
 
-  // Si no es 'todos', intentar encontrar el nombre de la categoría
   if (categorySlug !== "todos") {
-    // Si tenemos productos de categoría, usar el nombre de la categoría del primer producto
     if (
       categoryProducts &&
       categoryProducts.length > 0 &&
@@ -285,8 +282,7 @@ export default function Page() {
     <div className="min-h-screen bg-slate-50">
       {/* Header Banner - Nueva estructura tipo hero */}
       {!loading && (
-        <section className="bg-gradient-to-r from-slate-900 via-orange-900 to-slate-900 text-white relative overflow-hidden">
-          {/* Patrón de fondo */}
+        <section className="bg-linear-to-r from-slate-900 via-orange-900 to-slate-900 text-white relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,_transparent_50%,_rgba(255,255,255,0.1)_100%)]"></div>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,_transparent_50%,_rgba(255,255,255,0.05)_100%)]"></div>
@@ -317,9 +313,9 @@ export default function Page() {
                   {categorySlug === "todos" ? (
                     <>
                       <span className="block text-orange-400">
-                        EPP & Material
+                        EPP & Luminarias
                       </span>
-                      <span className="block">Eléctrico</span>
+                      <span className="block">Industriales</span>
                     </>
                   ) : (
                     <>
@@ -450,12 +446,12 @@ export default function Page() {
       )}
 
       {/* Contenido principal - Nueva estructura */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-0 py-8">
         {/* Barra de navegación rápida */}
         <nav className="mb-8">
-          <div className="bg-white rounded-xl shadow-sm border p-4">
-            <div className="flex items-center justify-between flex-wrap gap-4">
-              <div className="flex items-center gap-4">
+          <div className="bg-white rounded-xl shadow-sm border p-2">
+            <div className="flex items-center justify-between flex-wrap gap-2">
+              <div className="flex items-center gap-2">
                 <button
                   onClick={() => router.back()}
                   className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -480,18 +476,18 @@ export default function Page() {
         </nav>
 
         {/* Layout principal con estructura de dashboard */}
-        <div className="grid lg:grid-cols-4 gap-6">
+        <div className="grid lg:grid-cols-4 gap-3">
           {/* Sidebar rediseñado */}
-          <aside className="lg:col-span-1 space-y-6">
+          <aside className="lg:col-span-1 space-y-2">
             {/* Panel de filtros principal */}
             <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
-              <div className="bg-gradient-to-r from-slate-700 to-slate-800 p-4">
+              <div className="bg-linear-to-r from-slate-700 to-slate-800 p-2">
                 <h3 className="font-semibold text-white flex items-center gap-2">
                   <Filter className="w-4 h-4" />
                   Filtros de Búsqueda
                 </h3>
               </div>
-              <div className="p-4 space-y-4">
+              <div className="p-2 space-y-2">
                 <FilterCatalog
                   setFilterCatalog={setFilterCatalog}
                   filterCatalog={filterCatalog}
