@@ -213,7 +213,7 @@ const Navbar = () => {
                     <NavigationMenuItem>
                       <NavigationMenuTrigger className="uppercase cursor-pointer bg-transparent hover:bg-orange-50 data-[state=open]:bg-orange-50 transition-colors">
                         <Shield className="w-4 h-4 mr-2 text-orange-500" />
-                        Productos EPP
+                        Productos
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
                         <div className="w-[900px] capitalize h-96">
@@ -309,7 +309,9 @@ const Navbar = () => {
                                       {sortedCategories
                                         .filter(
                                           (category: CategoryType) =>
-                                            category.isFeatured,
+                                            category.isFeatured &&
+                                            category.categoryName !==
+                                              "Luminarias",
                                         )
                                         .map((category: CategoryType) => (
                                           <NavigationMenuLink
@@ -317,7 +319,7 @@ const Navbar = () => {
                                             asChild
                                           >
                                             <Link
-                                              href={`/categoria/${createSlug(category.categoryName)}`}
+                                              href={`/catalogo/${createSlug(category.categoryName)}`}
                                               className="group block select-none rounded-lg p-4 leading-none no-underline outline-none transition-all hover:bg-linear-to-br hover:from-orange-50 hover:to-orange-100 border border-gray-100 hover:border-orange-300 hover:shadow-md bg-white"
                                             >
                                               <div className="flex items-start gap-3">
@@ -338,6 +340,25 @@ const Navbar = () => {
                                             </Link>
                                           </NavigationMenuLink>
                                         ))}
+                                      <Link
+                                        href={`/luminarias`}
+                                        className="group block select-none rounded-lg p-4 leading-none no-underline outline-none transition-all hover:bg-linear-to-br hover:from-orange-50 hover:to-orange-100 border border-gray-100 hover:border-orange-300 hover:shadow-md bg-white"
+                                      >
+                                        <div className="flex items-start gap-3">
+                                          <div className="p-2 bg-orange-100 group-hover:bg-orange-500 rounded-lg transition-all group-hover:scale-110 shrink-0">
+                                            <Shield className="w-4 h-4 text-orange-600 group-hover:text-white transition-colors" />
+                                          </div>
+                                          <div className="flex-1 min-w-0">
+                                            <div className="text-sm font-bold text-gray-900 group-hover:text-orange-600 transition-colors mb-1 leading-tight">
+                                              Luminarias
+                                            </div>
+                                            <p className="text-xs leading-snug text-gray-600 group-hover:text-orange-700 transition-colors line-clamp-2">
+                                              Equipos certificados de luminarias
+                                            </p>
+                                          </div>
+                                          <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-orange-500 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+                                        </div>
+                                      </Link>
                                     </div>
                                   </div>
 
@@ -373,7 +394,7 @@ const Navbar = () => {
                 </NavigationMenu>
 
                 {/* Categorías destacadas */}
-                {!categoriesLoading &&
+                {/* {!categoriesLoading &&
                   sortedCategories &&
                   sortedCategories
                     .filter((category: CategoryType) => category.isFeatured)
@@ -385,8 +406,37 @@ const Navbar = () => {
                       >
                         {category.categoryName}
                       </Link>
-                    ))}
-
+                    ))} */}
+                <Link
+                  href="/catalogo/cajas-de-carton"
+                  className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                >
+                  Cajas de cartón
+                </Link>
+                <Link
+                  href="/catalogo/epp"
+                  className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                >
+                  EPP
+                </Link>
+                <Link
+                  href="/catalogo/equipo-de-oficina"
+                  className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                >
+                  Equipo de Oficina
+                </Link>
+                <Link
+                  href="/catalogo/luminarias"
+                  className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                >
+                  Luminarias
+                </Link>
+                <Link
+                  href="/catalogo/productos-de-limpieza"
+                  className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                >
+                  Productos de Limpieza
+                </Link>
                 <Link
                   href="/luminarias"
                   className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
