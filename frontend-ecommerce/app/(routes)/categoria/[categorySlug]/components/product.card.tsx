@@ -28,11 +28,10 @@ const ProductCard = (props: ProductCardProps) => {
   const { addItem, items } = useCart();
   const { addLoveItems } = useLovedProducts();
 
-  const isMaterialElectrico =
-    product.catalogo.slug === "luminarias" ||
-    product?.catalogo?.slug === "luminarias" ||
-    product?.category?.categoryName?.toLowerCase().includes("eléctrico") ||
-    product?.category?.categoryName?.toLowerCase().includes("electrico");
+const isMaterialElectrico =
+  product?.catalogo?.slug === "luminarias" ||
+  product?.category?.categoryName?.toLowerCase().includes("eléctrico") ||
+  product?.category?.categoryName?.toLowerCase().includes("electrico");
 
   const handleCardClick = (product: ProductType) => {
     if (product.slug === "productos-destacados") {
