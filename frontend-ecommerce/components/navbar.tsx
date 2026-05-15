@@ -407,12 +407,7 @@ const Navbar = () => {
                         {category.categoryName}
                       </Link>
                     ))} */}
-                <Link
-                  href="/catalogo/cajas-de-carton"
-                  className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-                >
-                  Cajas de cartón
-                </Link>
+                
                 <Link
                   href="/catalogo/epp"
                   className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
@@ -450,14 +445,7 @@ const Navbar = () => {
                 >
                   Nosotros
                 </Link>
-                <Link
-                  href="/postes"
-                  className="inline-flex items-center px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[12px] text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-                >
-                  Postes
-                </Link>
               </div>
-
               <div className="flex gap-x-6 uppercase text-gray-700">
                 <a
                   href="https://wa.me/5215510070205?text=Solicito%20asesoramiento%20sobre%20algunos%20productos.%20De%20la%20página%20de%20ZIME.COM.MX"

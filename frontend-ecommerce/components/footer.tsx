@@ -121,15 +121,7 @@ const Footer = () => {
                 <Mail className="w-4 h-4 text-orange-500 mr-2" />
                 <span className="text-gray-800">contacto@zime.com.mx</span>
               </div>
-              <div className="flex items-start">
-                <MapPin className="w-4 h-4 text-orange-500 mr-2 mt-0.5" />
-                <span className="text-gray-800">
-                  Av Sor Juana Ines de la Cruz s/n
-                  <br />
-                  Ricardo Flores Magon,
-                  <br /> 54607 Tepotzotlán, Méx.
-                </span>
-              </div>
+              
               <div className="flex items-center">
                 <Clock className="w-4 h-4 text-orange-500 mr-2" />
                 <span className="text-gray-800">Lun - Vie: 8:00 - 18:00</span>
@@ -139,7 +131,7 @@ const Footer = () => {
         </div>
 
         {/* Separador con degradado */}
-        <div className="my-8 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+        <div className="my-8 h-px bg-linear-to-r from-transparent via-yellow-500 to-transparent"></div>
 
         {/* Certificaciones y enlaces rápidos */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
