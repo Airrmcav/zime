@@ -56,21 +56,6 @@ const CarouselText = () => {
     },
     {
       id: 3,
-      type: "category",
-      title: "Cajas de cartón",
-      subtitle: "Resistencia y Versatilidad",
-      description:
-        "Encuentra cajas de cartón ideales para embalaje, almacenamiento y envíos. Diseñadas para proteger tus productos con calidad y durabilidad.",
-      buttonText: "Explorar Cajas",
-      background: "from-amber-700 via-yellow-800 to-amber-600",
-      icon: <Package className="w-12 h-12 text-white" />,
-      image: "carousel/4.png",
-      badge: "PROMOCIÓN",
-      badgeColor: "bg-amber-900",
-      catalogoSlug: "/catalogo/cajas-de-carton",
-    },
-    {
-      id: 4,
       type: "service",
       title: "Equipo de Protección Personal",
       subtitle: "Seguridad y confianza en cada trabajo",
@@ -85,7 +70,7 @@ const CarouselText = () => {
       catalogoSlug: "/catalogo/epp",
     },
     {
-      id: 5,
+      id: 4,
       type: "service",
       title: "Equipo de oficina",
       subtitle: "Productividad y organización para tu empresa",
@@ -100,7 +85,7 @@ const CarouselText = () => {
       catalogoSlug: "/catalogo/equipo-de-oficina",
     },
     {
-      id: 6,
+      id: 5,
       type: "service",
       title: "Productos de Limpieza",
       subtitle: "Higiene y frescura para tu espacio",
