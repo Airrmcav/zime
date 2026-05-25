@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import FilterCategory from "@/components/filters/filter-category";
+import FilterBrand from "@/components/filters/filter-brand";
 import Pagination from "@/components/ui/pagination";
 
 export default function Page() {
@@ -39,6 +40,7 @@ export default function Page() {
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [filterCategory, setFilterCategory] = useState("");
   const [filterArea, setFilterArea] = useState("");
+  const [filterBrand, setFilterBrand] = useState("");
 
   const {
     result: allProducts,
@@ -159,13 +161,28 @@ export default function Page() {
   // Calcular productos filtrados y visibles según paginación
   const safeFilteredProducts = Array.isArray(safeCatalogProducts)
     ? safeCatalogProducts.filter((product: ProductType) => {
+        // Filtro de categoría
         if (filterCategory && filterCategory !== "") {
           if (!product.category) return false;
-          return (
-            product.category.categoryName.toLowerCase() ===
+          if (
+            product.category.categoryName.toLowerCase() !==
             filterCategory.toLowerCase()
-          );
+          ) {
+            return false;
+          }
         }
+        
+        // Filtro de marca (solo para luminarias)
+        if (filterBrand && filterBrand !== "") {
+          if (!product.marcaProduct?.nameMarca) return false;
+          if (
+            product.marcaProduct.nameMarca.toLowerCase() !==
+            filterBrand.toLowerCase()
+          ) {
+            return false;
+          }
+        }
+        
         return true;
       })
     : [];
@@ -369,6 +386,14 @@ export default function Page() {
               }
               theme="orange"
             />
+            {catalogSlug === "luminarias" && (
+              <FilterBrand
+                setFilterBrand={setFilterBrand}
+                filterBrand={filterBrand}
+                products={safeCatalogProducts}
+                theme="orange"
+              />
+            )}
           </aside>
 
           {/* Área principal de productos */}
@@ -429,7 +454,7 @@ export default function Page() {
                 </div>
 
                 {/* Filtros activos */}
-                {filterCategory && (
+                {(filterCategory || filterBrand) && (
                   <div className="mt-4 pt-4 border-t border-gray-100">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-sm text-gray-500 font-medium">
@@ -447,11 +472,23 @@ export default function Page() {
                             </button>
                           </span>
                         )}
+                        {filterBrand && (
+                          <span className="inline-flex items-center gap-1 px-3 py-1 bg-orange-50 text-orange-700 rounded-full text-sm">
+                            Marca: {filterBrand}
+                            <button
+                              onClick={() => setFilterBrand("")}
+                              className="w-4 h-4 rounded-full bg-orange-200 text-orange-700 flex items-center justify-center hover:bg-orange-300"
+                            >
+                              ×
+                            </button>
+                          </span>
+                        )}
                       </div>
-                      {filterCategory && (
+                      {(filterCategory || filterBrand) && (
                         <button
                           onClick={() => {
                             setFilterCategory("");
+                            setFilterBrand("");
                           }}
                           className="ml-auto text-sm text-orange-600 hover:text-orange-800 hover:underline"
                         >

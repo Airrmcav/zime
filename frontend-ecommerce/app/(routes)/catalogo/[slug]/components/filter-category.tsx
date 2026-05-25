@@ -24,23 +24,17 @@ const FilterCategory = (props: FiltersCategoryProps) => {
   );
   const params = useParams();
   const { slug: catalogSlug } = params;
-
-  // Filtrar categorías por catálogo actual
   useEffect(() => {
     if (result && Array.isArray(result)) {
-      // Obtener el slug del catálogo actual
       let currentCatalogSlug = Array.isArray(catalogSlug)
         ? catalogSlug[0]
         : catalogSlug;
 
-      // Manejar casos especiales de slugs
       if (currentCatalogSlug === "epp") {
         currentCatalogSlug = "equipo-de-proteccion-personal";
       }
 
-      // Filtrar categorías que pertenecen al catálogo actual
       const filtered = result.filter((category) => {
-        // Verificar si la categoría tiene un catálogo asociado y si coincide con el slug actual
         return (
           category &&
           category.catalogo &&
@@ -52,7 +46,6 @@ const FilterCategory = (props: FiltersCategoryProps) => {
     }
   }, [result, catalogSlug]);
 
-  // Ordenar categorías alfabéticamente
   const sortedCategories =
     filteredCategories.length > 0
       ? [...filteredCategories]
@@ -63,7 +56,6 @@ const FilterCategory = (props: FiltersCategoryProps) => {
   const handleCategorySelect = (value: string) => {
     setFilterArea("");
     setFilterCategory(value);
-    // Mantener el menú expandido después de seleccionar
     setIsExpanded(true);
   };
 
@@ -72,8 +64,6 @@ const FilterCategory = (props: FiltersCategoryProps) => {
       setIsExpanded(!isExpanded);
     }
   };
-
-  // Encontrar la categoría seleccionada para mostrar en el header
   const selectedCategory = sortedCategories.find(
     (cat) => cat && cat.categoryName === filterCategory,
   );
