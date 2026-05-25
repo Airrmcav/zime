@@ -111,7 +111,7 @@ const FilterCategory = (props: FiltersCategoryProps) => {
 
   return (
     <div
-      className={`bg-white rounded-2xl border ${colors.border} shadow-lg overflow-hidden mt-3`}
+      className={`bg-white rounded-2xl border ${colors.border} shadow-lg overflow-hidden`}
     >
       {/* Header Clickeable */}
       <div
@@ -187,17 +187,17 @@ const FilterCategory = (props: FiltersCategoryProps) => {
 
           {/* Lista de Categorías - Scrollable */}
           {result && result.length > 0 && (
-            <div className="max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-gray-100">
-              <div className="p-4 space-y-1">
+            <div className="max-h-74 overflow-y-auto scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-gray-100">
+              <div className="p-4 space-y-0.5">
                 <RadioGroup
                   onValueChange={handleCategorySelect}
                   value={filterCategory}
-                  className="space-y-2"
+                  className="space-y-0"
                 >
                   {sortedCategories.map((category: CategoryType) => (
                     <div key={category.id} className="group relative">
                       <div
-                        className={`flex items-center space-x-3 p-3 rounded-lg border transition-all duration-200 cursor-pointer
+                        className={`flex items-center space-x-3 p-2 rounded-lg border transition-all duration-200 cursor-pointer
                                                 ${
                                                   filterCategory ===
                                                   category.categoryName
