@@ -44,7 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       // Verificar si hay más páginas
       const pagination = json.meta?.pagination;
       if (pagination) {
-        // console.log(`Página ${currentPage} de ${pagination.pageCount}, total: ${pagination.total}`);
+        console.log(`Página ${currentPage} de ${pagination.pageCount}, productos en esta página: ${json.data?.length || 0}, total acumulado: ${allProducts.length}`);
         hasMorePages = currentPage < pagination.pageCount;
         currentPage++;
       } else {
@@ -57,11 +57,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // console.log(`Total productos obtenidos: ${allProducts.length}`);
+  console.log(`✅ Total productos obtenidos para sitemap: ${allProducts.length}`);
 
   // Filtrar y mapear productos válidos
   // Strapi puede devolver productos con estructura { id, attributes: { slug } } o ya transformados
   const products = allProducts
+    .filter((product: any) => {
+      // Filtrar solo productos activos
+      const isActive = product?.active ?? product?.attributes?.active ?? true;
+      return isActive;
+    })
     .map((product: any) => {
       // Intentar obtener el slug de diferentes formas posibles
       let slug: string | null = null;
@@ -82,6 +87,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       priority: 0.7,
     }));
+
+  console.log(`✅ Productos válidos incluidos en sitemap: ${products.length}`);
 
   // console.log(`Productos válidos para sitemap: ${products.length}`);
 
@@ -295,6 +302,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
+  // Log del resumen del sitemap antes de retornar
+  const totalUrls = 5 + categories.length + staticMarcas.length + marcas.length + products.length;
+  console.log(`\n📋 SITEMAP GENERADO:\n` +
+    `  ✅ URLs estáticas: 5\n` +
+    `  ✅ Categorías: ${categories.length}\n` +
+    `  ✅ Marcas estáticas: ${staticMarcas.length}\n` +
+    `  ✅ Marcas dinámicas: ${marcas.length}\n` +
+    `  ✅ Productos: ${products.length}\n` +
+    `  ✅ TOTAL URLS: ${totalUrls}\n`);
+
   return [
     {
       url: baseUrl,
@@ -302,12 +319,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${baseUrl}/luminarias`,
+      url: `${baseUrl}/catalogo/todos`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/catalogo/luminarias`,
       lastModified: new Date(),
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/postes`,
+      url: `${baseUrl}/catalogo/epp`,
       lastModified: new Date(),
       priority: 0.8,
     },
